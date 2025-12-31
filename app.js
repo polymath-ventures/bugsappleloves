@@ -437,7 +437,7 @@ function renderBugCard(bug, impact, index) {
             <p class="verdict-text">
                 Apple could fix this in <strong>${bug.engineeringEstimate.hoursToFix} engineering hours</strong>
                 (${bug.engineeringEstimate.teamSize} engineer${bug.engineeringEstimate.teamSize > 1 ? 's' : ''}, ${bug.engineeringEstimate.sprints} sprint${bug.engineeringEstimate.sprints > 1 ? 's' : ''}).
-                Instead, humanity wastes that many hours every <strong>${formatTime(bug.engineeringEstimate.hoursToFix * 3600 / impact.dailyHours)}</strong>.
+                Instead, humanity wastes <strong>${formatNumber(Math.round(impact.dailyHours / 86400 * 100) / 100)} hours every second</strong>.
             </p>
         </section>
 
