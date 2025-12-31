@@ -3,51 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joke Bugs - The Bugs They Won't Fix</title>
+    <title>Joke Bugs</title>
+    <meta name="description" content="The bugs they won't fix. We did the math on how much time they've wasted.">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="hero">
-        <h1>Joke Bugs</h1>
-        <p class="tagline">The bugs they won't fix. We did the math on how much time they've wasted.</p>
-    </header>
-
-    <section class="methodology">
-        <h2>The Formula</h2>
-        <div class="formula-container">
-            <p>We estimate time wasted using publicly available data:</p>
-            <div class="formula">
-                <code>Time Wasted = Users Affected × Frequency × Time Per Incident × Days Since Reported</code>
-            </div>
-            <ul class="formula-notes">
-                <li><strong>Users Affected:</strong> Estimated from market share data and feature usage patterns</li>
-                <li><strong>Frequency:</strong> How often users encounter this bug (daily, weekly, etc.)</li>
-                <li><strong>Time Per Incident:</strong> Seconds/minutes lost each time the bug occurs</li>
-                <li><strong>Days Since Reported:</strong> How long this bug has been known and unfixed</li>
-            </ul>
-        </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="hero-title">Joke Bugs</h1>
+        <p class="hero-subtitle">The bugs they won't fix.<br>We did the math.</p>
     </section>
 
+    <!-- Total Impact Counter -->
     <section class="total-impact">
-        <div class="impact-number">
-            <span class="label">Total Time Wasted by Humanity</span>
-            <span id="total-time" class="value">Calculating...</span>
+        <div class="impact-container">
+            <p class="impact-label">Total time wasted by humanity</p>
+            <p class="impact-value" id="total-time">Calculating...</p>
+            <p class="impact-sublabel">and counting</p>
         </div>
     </section>
 
+    <!-- Methodology Section -->
+    <section class="methodology">
+        <div class="methodology-container">
+            <h2 class="section-title">The Formula</h2>
+            <p class="section-subtitle">Every bug is different. But the math is always real.</p>
+
+            <div class="formula-explanation">
+                <div class="formula-block">
+                    <h3>Base Impact</h3>
+                    <code>Users Affected × Frequency × Time Per Incident</code>
+                    <p>How many people hit this bug, how often, and how long they suffer each time.</p>
+                </div>
+
+                <div class="formula-block">
+                    <h3>Power User Tax</h3>
+                    <code>Σ (Workaround Time × Participation Rate)</code>
+                    <p>The extra time spent by people who try to fix what can't be fixed.</p>
+                </div>
+
+                <div class="formula-block">
+                    <h3>Shame Multiplier</h3>
+                    <code>Years Unfixed × Pressure Factor</code>
+                    <p>How long they've known and how urgent the task usually is.</p>
+                </div>
+
+                <div class="formula-block final">
+                    <h3>The Verdict</h3>
+                    <code>Human Hours Wasted ÷ Engineering Hours to Fix</code>
+                    <p>How many times over they could have fixed it with the productivity they've destroyed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bugs Container -->
     <main id="bugs-container">
         <!-- Bugs will be rendered here by JavaScript -->
+        <div class="loading">Loading bugs<span class="dots"></span></div>
     </main>
 
-    <footer>
-        <p>This is a joke. Kind of. These bugs are real though.</p>
-        <p class="disclaimer">Not affiliated with any fruit-named companies. All estimates are approximations based on public data.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-text">This is a joke. Kind of.</p>
+            <p class="footer-disclaimer">Not affiliated with any fruit-named technology companies. All estimates use public data and reasonable assumptions. Your actual frustration may vary.</p>
+            <p class="footer-cta">Have a joke bug to submit? <a href="https://github.com/polymath-ventures/applejokebugs/issues" target="_blank">Open an issue</a></p>
+        </div>
     </footer>
 
-    <script src="bugs.json" type="application/json" id="bugs-data"></script>
-    <script src="app.js"></script>
+    <script src="app.js" type="module"></script>
 </body>
 </html>

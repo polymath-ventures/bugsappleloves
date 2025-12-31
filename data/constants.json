@@ -1,0 +1,65 @@
+{
+  "platformUsers": {
+    "macOS": {
+      "count": 100000000,
+      "label": "macOS users",
+      "symbol": "U_mac"
+    },
+    "iOS": {
+      "count": 1000000000,
+      "label": "iOS users",
+      "symbol": "U_iOS"
+    },
+    "iPadOS": {
+      "count": 200000000,
+      "label": "iPadOS users",
+      "symbol": "U_iPad"
+    },
+    "visionOS": {
+      "count": 500000,
+      "label": "visionOS users",
+      "symbol": "U_vision"
+    }
+  },
+  "appleFacts": {
+    "marketCap": {
+      "value": 3000000000000,
+      "label": "Apple Market Cap",
+      "symbol": "M_apple"
+    },
+    "engineerSalary": {
+      "value": 200000,
+      "label": "Avg Engineer Salary ($/year)",
+      "symbol": "S_eng"
+    },
+    "sprintWeeks": {
+      "value": 2,
+      "label": "Sprint Length (weeks)",
+      "symbol": "T_sprint"
+    },
+    "engineerHoursPerWeek": {
+      "value": 40,
+      "label": "Engineer Hours/Week",
+      "symbol": "H_week"
+    },
+    "engineerProductiveHours": {
+      "value": 0.6,
+      "label": "Productive Hour Ratio",
+      "symbol": "P_productive"
+    }
+  },
+  "timeConversions": {
+    "secondsPerMinute": 60,
+    "minutesPerHour": 60,
+    "hoursPerDay": 24,
+    "daysPerYear": 365
+  },
+  "meta": {
+    "lastUpdated": "2024-01-15",
+    "sources": [
+      "Platform user counts: Estimated from Apple earnings reports and industry analysis",
+      "Engineer salary: Levels.fyi and Glassdoor averages for senior engineers",
+      "Market cap: Current as of last update"
+    ]
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "bugs": [
+    {
+      "id": "mail-search",
+      "title": "Mail Search Doesn't Work",
+      "subtitle": "The search bar is purely decorative",
+      "description": "You need to find an email. You type in the sender's name. Nothing. You try the subject line. Nothing. You try a unique word you know was in the email. Nothing. You give up, open Gmail in a browser, search there, find it instantly. This has been broken for over a decade.",
+      "platforms": ["macOS", "iOS", "iPadOS"],
+      "screenshot": "screenshots/mail-search.png",
+      "videoUrl": null,
+      "reportedDate": "2012-09-19",
+      "tags": ["Mail", "Search", "Gmail", "Productivity"],
+
+      "scope": {
+        "featureUsageRate": 0.35,
+        "featureUsageLabel": "of users use Apple Mail",
+        "bugEncounterRate": 0.60,
+        "bugEncounterLabel": "of Mail users experience search failures",
+        "frequencyPerDay": 2.3,
+        "frequencyLabel": "searches per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The typical journey of a failed Mail search",
+        "steps": [
+          {
+            "id": "search_fragment",
+            "action": "Search for a word fragment",
+            "description": "Type part of a name or subject",
+            "seconds": 8,
+            "retries": 1.5,
+            "symbol": "T_frag"
+          },
+          {
+            "id": "search_full",
+            "action": "Try the full word",
+            "description": "Maybe it needs the complete word?",
+            "seconds": 12,
+            "retries": 1.3,
+            "symbol": "T_full"
+          },
+          {
+            "id": "search_variations",
+            "action": "Try other variations",
+            "description": "Sender name, subject keywords, desperation sets in",
+            "seconds": 18,
+            "retries": 2.0,
+            "symbol": "T_var"
+          },
+          {
+            "id": "give_up",
+            "action": "Give up and sigh",
+            "description": "Accept that Mail has failed you again",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_sigh"
+          },
+          {
+            "id": "open_gmail",
+            "action": "Open Gmail in browser",
+            "description": "Navigate to gmail.com, maybe log in",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_gmail"
+          },
+          {
+            "id": "gmail_search",
+            "action": "Search in Gmail",
+            "description": "Type the same search, find it instantly",
+            "seconds": 8,
+            "retries": 1,
+            "symbol": "T_success"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Extra time spent by users trying to fix the unfixable",
+        "sinks": [
+          {
+            "id": "rebuild_index",
+            "action": "Rebuild Mail/Spotlight index",
+            "description": "The nuclear option that rarely helps",
+            "seconds": 7200,
+            "participation": 0.03,
+            "frequencyDays": 90,
+            "symbol": "T_reindex"
+          },
+          {
+            "id": "google_help",
+            "action": "Google for solutions",
+            "description": "Search 'Apple Mail search not working' and read forums",
+            "seconds": 600,
+            "participation": 0.15,
+            "frequencyDays": 30,
+            "symbol": "T_google"
+          },
+          {
+            "id": "settings_futzing",
+            "action": "Mess with Mail settings",
+            "description": "Remove and re-add accounts, toggle settings randomly",
+            "seconds": 900,
+            "participation": 0.12,
+            "frequencyDays": 60,
+            "symbol": "T_settings"
+          },
+          {
+            "id": "alternative_apps",
+            "action": "Evaluate alternative mail apps",
+            "description": "Download Spark, Airmail, Edison... give up and return to Mail",
+            "seconds": 1800,
+            "participation": 0.08,
+            "frequencyDays": 180,
+            "symbol": "T_alt"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.4,
+        "pressureLabel": "Average urgency when searching for email",
+        "pressureExplanation": "1.0 = casual, 2.0 = boss waiting on Zoom"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 320,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Search indexing is a solved problem. Two engineers, one sprint."
+      }
+    },
+
+    {
+      "id": "airpods-switch",
+      "title": "AirPods Switch to the Wrong Device",
+      "subtitle": "Seamless, but not in the way you want",
+      "description": "You're listening to music on your Mac. Your iPhone buzzes with a notification. Your AirPods instantly switch to your iPhone. No audio was playing on your iPhone. You didn't ask for this. Now you have to manually switch back. This happens multiple times per day.",
+      "platforms": ["macOS", "iOS", "iPadOS", "visionOS"],
+      "screenshot": "screenshots/airpods-switch.png",
+      "videoUrl": null,
+      "reportedDate": "2019-10-30",
+      "tags": ["AirPods", "Bluetooth", "Audio", "Ecosystem"],
+
+      "scope": {
+        "featureUsageRate": 0.15,
+        "featureUsageLabel": "of users own AirPods",
+        "bugEncounterRate": 0.70,
+        "bugEncounterLabel": "of multi-device AirPods users experience unwanted switching",
+        "frequencyPerDay": 4.2,
+        "frequencyLabel": "unwanted switches per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The audio hijacking experience",
+        "steps": [
+          {
+            "id": "audio_stops",
+            "action": "Audio suddenly stops",
+            "description": "Your music/podcast/video goes silent mid-sentence",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_stop"
+          },
+          {
+            "id": "confusion",
+            "action": "Moment of confusion",
+            "description": "Wait, what happened? Did it pause?",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_huh"
+          },
+          {
+            "id": "check_phone",
+            "action": "Check your phone",
+            "description": "See a notification that triggered the switch",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_check"
+          },
+          {
+            "id": "find_control",
+            "action": "Find audio controls",
+            "description": "Open Control Center or click menu bar",
+            "seconds": 4,
+            "retries": 1.2,
+            "symbol": "T_find"
+          },
+          {
+            "id": "switch_back",
+            "action": "Switch AirPods back",
+            "description": "Manually reconnect to your original device",
+            "seconds": 6,
+            "retries": 1.3,
+            "symbol": "T_switch"
+          },
+          {
+            "id": "find_place",
+            "action": "Find your place",
+            "description": "Seek back to where you were before the interruption",
+            "seconds": 8,
+            "retries": 1,
+            "symbol": "T_seek"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Attempts to prevent the switching madness",
+        "sinks": [
+          {
+            "id": "settings_hunt",
+            "action": "Hunt for auto-switch settings",
+            "description": "Dig through Bluetooth settings looking for options that don't exist",
+            "seconds": 600,
+            "participation": 0.25,
+            "frequencyDays": 60,
+            "symbol": "T_hunt"
+          },
+          {
+            "id": "google_disable",
+            "action": "Google how to disable auto-switching",
+            "description": "Find outdated articles about settings that have moved or been removed",
+            "seconds": 480,
+            "participation": 0.20,
+            "frequencyDays": 90,
+            "symbol": "T_google"
+          },
+          {
+            "id": "forget_devices",
+            "action": "Try forgetting and re-pairing",
+            "description": "The classic 'have you tried turning it off and on again' approach",
+            "seconds": 900,
+            "participation": 0.10,
+            "frequencyDays": 120,
+            "symbol": "T_repair"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.6,
+        "pressureLabel": "Audio interruptions are jarring",
+        "pressureExplanation": "1.0 = background music, 2.0 = on a call"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 160,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Add a 'don't auto-switch' toggle. This is a settings page change."
+      }
+    },
+
+    {
+      "id": "autocorrect-its",
+      "title": "Autocorrect: 'its' → 'it's'",
+      "subtitle": "It's wrong. Every time.",
+      "description": "You type 'its' (possessive). Autocorrect changes it to 'it's' (contraction). You meant 'its'. You change it back. Send. You look at your message. It says 'it's'. It changed it AGAIN after you fixed it. You add 'its' to your dictionary. It still changes it.",
+      "platforms": ["iOS", "iPadOS", "macOS"],
+      "screenshot": "screenshots/autocorrect-its.png",
+      "videoUrl": null,
+      "reportedDate": "2009-06-17",
+      "tags": ["Keyboard", "Autocorrect", "Grammar", "Embarrassing"],
+
+      "scope": {
+        "featureUsageRate": 0.85,
+        "featureUsageLabel": "of users have autocorrect enabled",
+        "bugEncounterRate": 0.40,
+        "bugEncounterLabel": "of English typists encounter this regularly",
+        "frequencyPerDay": 1.8,
+        "frequencyLabel": "its/it's incidents per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The grammar humiliation cycle",
+        "steps": [
+          {
+            "id": "type_its",
+            "action": "Type 'its' correctly",
+            "description": "You know the difference. You're not an animal.",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_type"
+          },
+          {
+            "id": "autocorrect_strikes",
+            "action": "Autocorrect 'fixes' it",
+            "description": "Silently changed to 'it's' without your consent",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_auto"
+          },
+          {
+            "id": "notice",
+            "action": "Notice the change",
+            "description": "Catch it before sending (if you're lucky)",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_notice"
+          },
+          {
+            "id": "fix_it",
+            "action": "Fix it manually",
+            "description": "Delete and retype, or tap the autocorrect suggestion",
+            "seconds": 4,
+            "retries": 1.5,
+            "symbol": "T_fix"
+          },
+          {
+            "id": "verify",
+            "action": "Verify it stuck",
+            "description": "Re-read to make sure it didn't change again",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_verify"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Futile attempts to teach the unteachable",
+        "sinks": [
+          {
+            "id": "add_dictionary",
+            "action": "Add 'its' to dictionary",
+            "description": "Create a text replacement that doesn't work reliably",
+            "seconds": 120,
+            "participation": 0.30,
+            "frequencyDays": 180,
+            "symbol": "T_dict"
+          },
+          {
+            "id": "reset_keyboard",
+            "action": "Reset keyboard dictionary",
+            "description": "Nuclear option that loses all your learned words",
+            "seconds": 180,
+            "participation": 0.08,
+            "frequencyDays": 365,
+            "symbol": "T_reset"
+          },
+          {
+            "id": "disable_autocorrect",
+            "action": "Disable autocorrect entirely",
+            "description": "Give up on the feature, suffer typos instead",
+            "seconds": 60,
+            "participation": 0.15,
+            "frequencyDays": 365,
+            "symbol": "T_disable"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.3,
+        "pressureLabel": "Grammar matters in professional contexts",
+        "pressureExplanation": "1.0 = texting friends, 2.0 = email to client"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 80,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Improve context detection for possessive vs contraction. One engineer, one sprint."
+      }
+    }
+  ]
+}
