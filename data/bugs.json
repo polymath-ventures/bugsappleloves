@@ -362,6 +362,126 @@
         "sprints": 1,
         "explanation": "Improve context detection for possessive vs contraction. One engineer, one sprint."
       }
+    },
+
+    {
+      "id": "apple-pay-card-icon",
+      "title": "Apple Pay: Card Icon Changes Address",
+      "subtitle": "The credit card icon doesn't change the credit card",
+      "description": "You're checking out and need to change your card. You see a button with a credit card icon and your address. You tap it. It changes your address. Not the card. To change the card, you need the other button that says 'Change Payment'. The one without the card icon. Every. Single. Time.",
+      "platforms": ["iOS", "iPadOS"],
+      "screenshot": "screenshots/apple-pay-card.png",
+      "videoUrl": null,
+      "reportedDate": "2018-09-17",
+      "tags": ["Apple Pay", "UX", "Payments", "Infuriating"],
+
+      "scope": {
+        "featureUsageRate": 0.25,
+        "featureUsageLabel": "of users use Apple Pay",
+        "bugEncounterRate": 0.85,
+        "bugEncounterLabel": "of users who try to change cards tap the wrong button first",
+        "frequencyPerDay": 0.3,
+        "frequencyLabel": "card change attempts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The payment confusion ritual",
+        "steps": [
+          {
+            "id": "need_change_card",
+            "action": "Need to use a different card",
+            "description": "This purchase should go on a different card",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_need"
+          },
+          {
+            "id": "see_card_icon",
+            "action": "See button with card icon",
+            "description": "There's a credit card icon! That must be it",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_see"
+          },
+          {
+            "id": "tap_wrong_button",
+            "action": "Tap the card icon button",
+            "description": "Confidently tap the button with the credit card on it",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_tap"
+          },
+          {
+            "id": "address_screen",
+            "action": "Address picker appears",
+            "description": "Wait, this is for addresses? But there was a card icon!",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_confused"
+          },
+          {
+            "id": "cancel",
+            "action": "Cancel and go back",
+            "description": "Dismiss the address picker",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_cancel"
+          },
+          {
+            "id": "find_correct",
+            "action": "Find the other button",
+            "description": "Tap 'Change Payment' - the one WITHOUT the card icon",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_find"
+          },
+          {
+            "id": "change_card",
+            "action": "Finally change the card",
+            "description": "Select the correct card",
+            "seconds": 4,
+            "retries": 1,
+            "symbol": "T_change"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Learning doesn't help because the UX is backwards",
+        "sinks": [
+          {
+            "id": "muscle_memory",
+            "action": "Fight wrong muscle memory",
+            "description": "You KNOW the card icon is wrong, but your brain still reaches for it",
+            "seconds": 5,
+            "participation": 0.70,
+            "frequencyDays": 1,
+            "symbol": "T_memory"
+          },
+          {
+            "id": "explain_others",
+            "action": "Explain to confused friends/family",
+            "description": "Watch someone else make the same mistake, explain the backwards logic",
+            "seconds": 120,
+            "participation": 0.15,
+            "frequencyDays": 30,
+            "symbol": "T_explain"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.8,
+        "pressureLabel": "Checkout pressure is high",
+        "pressureExplanation": "1.0 = browsing, 2.0 = line of people behind you"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 8,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Move the card icon to the payment button. Literally one icon swap."
+      }
     }
   ]
 }
