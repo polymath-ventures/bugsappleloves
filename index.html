@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Bugs - The Bugs They Won't Fix</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <h1>Joke Bugs</h1>
+        <p class="tagline">The bugs they won't fix. We did the math on how much time they've wasted.</p>
+    </header>
+
+    <section class="methodology">
+        <h2>The Formula</h2>
+        <div class="formula-container">
+            <p>We estimate time wasted using publicly available data:</p>
+            <div class="formula">
+                <code>Time Wasted = Users Affected × Frequency × Time Per Incident × Days Since Reported</code>
+            </div>
+            <ul class="formula-notes">
+                <li><strong>Users Affected:</strong> Estimated from market share data and feature usage patterns</li>
+                <li><strong>Frequency:</strong> How often users encounter this bug (daily, weekly, etc.)</li>
+                <li><strong>Time Per Incident:</strong> Seconds/minutes lost each time the bug occurs</li>
+                <li><strong>Days Since Reported:</strong> How long this bug has been known and unfixed</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="total-impact">
+        <div class="impact-number">
+            <span class="label">Total Time Wasted by Humanity</span>
+            <span id="total-time" class="value">Calculating...</span>
+        </div>
+    </section>
+
+    <main id="bugs-container">
+        <!-- Bugs will be rendered here by JavaScript -->
+    </main>
+
+    <footer>
+        <p>This is a joke. Kind of. These bugs are real though.</p>
+        <p class="disclaimer">Not affiliated with any fruit-named companies. All estimates are approximations based on public data.</p>
+    </footer>
+
+    <script src="bugs.json" type="application/json" id="bugs-data"></script>
+    <script src="app.js"></script>
+</body>
+</html>
