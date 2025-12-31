@@ -228,45 +228,60 @@ function handleEditableClick(e) {
     const target = e.target;
     if (!target.classList.contains('editable')) return;
 
+    // Prevent default and stop propagation for Safari
+    e.preventDefault();
+    e.stopPropagation();
+
     const currentValue = target.dataset.value;
     const type = target.dataset.type;
+    const bugIndex = target.dataset.bug;
+    const path = target.dataset.path;
 
     // Create input
     const input = document.createElement('input');
-    input.type = 'number';
+    input.type = 'text';  // Use text instead of number for better Safari compatibility
+    input.inputMode = 'decimal';  // Shows numeric keyboard on mobile
     input.className = 'editable-input';
     input.value = type === 'percent' ? (parseFloat(currentValue) * 100) : currentValue;
-    input.step = type === 'percent' ? '1' : type === 'frequency' ? '0.1' : '1';
+    input.dataset.bug = bugIndex;
+    input.dataset.path = path;
+    input.dataset.type = type;
+    input.dataset.originalValue = currentValue;
 
     // Replace span with input
-    target.replaceWith(input);
-    input.focus();
-    input.select();
+    target.parentNode.replaceChild(input, target);
+
+    // Safari needs a slight delay before focus
+    setTimeout(() => {
+        input.focus();
+        input.select();
+    }, 10);
 
     // Handle blur/enter
     const finishEdit = () => {
         let newValue = parseFloat(input.value);
-        if (type === 'percent') newValue = newValue / 100;
+        const origValue = parseFloat(input.dataset.originalValue);
+
+        if (input.dataset.type === 'percent') newValue = newValue / 100;
 
         if (isNaN(newValue) || newValue < 0) {
-            newValue = parseFloat(currentValue);
+            newValue = origValue;
         }
 
         // Update the bug data
-        const bugIndex = parseInt(target.dataset.bug);
-        const path = target.dataset.path;
-        updateBugValue(bugIndex, path, newValue);
+        updateBugValue(parseInt(input.dataset.bug), input.dataset.path, newValue);
 
         // Re-render
         renderAll();
     };
 
     input.addEventListener('blur', finishEdit);
-    input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
+    input.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Enter') {
+            evt.preventDefault();
             input.blur();
-        } else if (e.key === 'Escape') {
-            input.value = currentValue;
+        } else if (evt.key === 'Escape') {
+            input.value = input.dataset.originalValue;
             input.blur();
         }
     });
@@ -437,7 +452,7 @@ function renderBugCard(bug, impact, index) {
             <p class="verdict-text">
                 Apple could fix this in <strong>${bug.engineeringEstimate.hoursToFix} engineering hours</strong>
                 (${bug.engineeringEstimate.teamSize} engineer${bug.engineeringEstimate.teamSize > 1 ? 's' : ''}, ${bug.engineeringEstimate.sprints} sprint${bug.engineeringEstimate.sprints > 1 ? 's' : ''}).
-                Instead, humanity wastes that many hours every <strong>${formatTime(bug.engineeringEstimate.hoursToFix * 3600 / impact.dailyHours)}</strong>.
+                Instead, humanity wastes <strong>${formatNumber(Math.round(impact.dailyHours / 86400 * 100) / 100)} hours every second</strong>.
             </p>
         </section>
 
