@@ -695,3 +695,90 @@ body {
         align-items: flex-start;
     }
 }
+
+/* ========== Editable Values ========== */
+.editable {
+    cursor: pointer;
+    border-bottom: 1px dashed var(--text-tertiary);
+    transition: all 0.2s ease;
+}
+
+.editable:hover {
+    border-bottom-color: var(--accent);
+    color: var(--accent);
+}
+
+.editable-input {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: inherit;
+    padding: 2px 6px;
+    width: auto;
+    min-width: 60px;
+    max-width: 120px;
+    text-align: center;
+}
+
+.editable-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(41, 151, 255, 0.3);
+}
+
+/* Editable hint */
+.editable-hint {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    margin-top: var(--space-sm);
+    font-style: italic;
+}
+
+/* Reset button */
+.reset-button {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: var(--space-md);
+}
+
+.reset-button:hover {
+    background: var(--bg-secondary);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Modified indicator */
+.modified-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--impact-orange);
+    border-radius: 50%;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+/* Scope items - make editable */
+.scope-value.editable {
+    border-bottom: none;
+    background: var(--bg-tertiary);
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+.scope-value.editable:hover {
+    background: var(--bg-secondary);
+}
+
+/* Step time - editable */
+.step-time .editable {
+    display: inline-block;
+}

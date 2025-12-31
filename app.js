@@ -1,6 +1,13 @@
 /**
- * Joke Bugs - Formula Engine & Renderer
+ * Apple Joke Bugs - Formula Engine & Renderer
+ * With editable values for user customization
  */
+
+// ========== State Management ==========
+
+let constants = null;
+let originalBugs = null;
+let currentBugs = null;
 
 // ========== Data Loading ==========
 
@@ -10,10 +17,12 @@ async function loadData() {
         fetch('data/bugs.json')
     ]);
 
-    const constants = await constantsRes.json();
+    constants = await constantsRes.json();
     const bugsData = await bugsRes.json();
+    originalBugs = JSON.parse(JSON.stringify(bugsData.bugs)); // Deep clone for reset
+    currentBugs = bugsData.bugs;
 
-    return { constants, bugs: bugsData.bugs };
+    return { constants, bugs: currentBugs };
 }
 
 // ========== Formula Engine ==========
@@ -25,9 +34,6 @@ class FormulaEngine {
         this.appleFacts = constants.appleFacts;
     }
 
-    /**
-     * Calculate total affected users for a bug across all its platforms
-     */
     calculateAffectedUsers(bug) {
         const { platforms, scope } = bug;
         let totalUsers = 0;
@@ -51,9 +57,6 @@ class FormulaEngine {
         return { totalUsers, breakdown };
     }
 
-    /**
-     * Calculate time per incident from behavioral flow
-     */
     calculateTimePerIncident(bug) {
         const { behavioralFlow } = bug;
         let totalSeconds = 0;
@@ -71,16 +74,12 @@ class FormulaEngine {
         return { totalSeconds, stepBreakdown };
     }
 
-    /**
-     * Calculate daily power user tax
-     */
     calculatePowerUserTax(bug, affectedUsers) {
         const { powerUserTax } = bug;
         let dailyTaxSeconds = 0;
         const taxBreakdown = [];
 
         for (const sink of powerUserTax.sinks) {
-            // Convert to daily: (seconds * participation) / frequencyDays
             const dailyPerUser = (sink.seconds * sink.participation) / sink.frequencyDays;
             const dailyTotal = dailyPerUser * affectedUsers;
             dailyTaxSeconds += dailyTotal;
@@ -95,104 +94,57 @@ class FormulaEngine {
         return { dailyTaxSeconds, taxBreakdown };
     }
 
-    /**
-     * Calculate years since bug was reported
-     */
     calculateYearsUnfixed(bug) {
         const reportedDate = new Date(bug.reportedDate);
         const now = new Date();
         const diffMs = now - reportedDate;
         const diffYears = diffMs / (1000 * 60 * 60 * 24 * 365.25);
-        return Math.round(diffYears * 10) / 10; // Round to 1 decimal
+        return Math.round(diffYears * 10) / 10;
     }
 
-    /**
-     * Calculate full impact for a bug
-     */
     calculateImpact(bug) {
-        // Affected users
         const { totalUsers, breakdown: userBreakdown } = this.calculateAffectedUsers(bug);
-
-        // Time per incident
         const { totalSeconds: secondsPerIncident, stepBreakdown } = this.calculateTimePerIncident(bug);
-
-        // Daily base impact (everyone)
         const dailyBaseSeconds = totalUsers * bug.scope.frequencyPerDay * secondsPerIncident;
-
-        // Power user tax
         const { dailyTaxSeconds, taxBreakdown } = this.calculatePowerUserTax(bug, totalUsers);
-
-        // Total daily seconds
         const dailyTotalSeconds = dailyBaseSeconds + dailyTaxSeconds;
-
-        // Shame factors
         const yearsUnfixed = this.calculateYearsUnfixed(bug);
         const pressureFactor = bug.shameFactors.pressureFactor;
-
-        // Apply shame multiplier (years * pressure as a soft multiplier)
-        // We use sqrt to prevent astronomical numbers
         const shameMultiplier = 1 + (Math.sqrt(yearsUnfixed) * (pressureFactor - 1));
         const adjustedDailySeconds = dailyTotalSeconds * shameMultiplier;
-
-        // Convert to human-readable
         const dailyHours = adjustedDailySeconds / 3600;
-        const dailyYears = dailyHours / (24 * 365.25); // Human-years per day
+        const dailyYears = dailyHours / (24 * 365.25);
         const annualHours = dailyHours * 365;
         const annualYears = dailyYears * 365;
-
-        // Total since bug reported
         const daysSinceReported = yearsUnfixed * 365.25;
         const totalHoursSinceReported = dailyHours * daysSinceReported;
         const totalYearsSinceReported = dailyYears * daysSinceReported;
-
-        // Engineering comparison
         const engHoursToFix = bug.engineeringEstimate.hoursToFix;
-        const engHoursPerYear = this.appleFacts.engineerHoursPerWeek.value * 52 * this.appleFacts.engineerProductiveHours.value;
-        const fixesPerYear = annualHours / engHoursToFix;
-        const humanYearsPerEngYear = annualYears; // How many human-years wasted per year
-
-        // Cost comparison
-        const hourlyWage = 30; // Assume average affected user hourly value
+        const hourlyWage = 30;
         const annualCostToHumanity = annualHours * hourlyWage;
         const engSalary = this.appleFacts.engineerSalary.value;
         const engineersPayable = annualCostToHumanity / engSalary;
 
         return {
-            // User scope
             affectedUsers: totalUsers,
             userBreakdown,
-
-            // Time breakdown
             secondsPerIncident,
             stepBreakdown,
-
-            // Power user tax
             dailyTaxSeconds,
             taxBreakdown,
-
-            // Daily impact
             dailyBaseSeconds,
             dailyTotalSeconds,
             shameMultiplier,
             adjustedDailySeconds,
             dailyHours,
             dailyYears,
-
-            // Annual impact
             annualHours,
             annualYears,
-
-            // Cumulative impact
             yearsUnfixed,
             totalHoursSinceReported,
             totalYearsSinceReported,
-
-            // Shame
             pressureFactor,
-
-            // Engineering comparison
             engHoursToFix,
-            fixesPerYear,
             engineersPayable,
             annualCostToHumanity
         };
@@ -207,6 +159,13 @@ function formatNumber(num) {
     if (num >= 1e6) return (num / 1e6).toFixed(1) + ' million';
     if (num >= 1e3) return (num / 1e3).toFixed(1) + 'K';
     return num.toLocaleString();
+}
+
+function formatNumberShort(num) {
+    if (num >= 1e9) return (num / 1e9).toFixed(0) + 'B';
+    if (num >= 1e6) return (num / 1e6).toFixed(0) + 'M';
+    if (num >= 1e3) return (num / 1e3).toFixed(0) + 'K';
+    return num.toString();
 }
 
 function formatTime(seconds) {
@@ -242,16 +201,124 @@ function formatDate(dateStr) {
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+function formatPercent(decimal) {
+    return (decimal * 100).toFixed(0) + '%';
+}
+
+// ========== Editable Value Helper ==========
+
+function createEditable(value, bugIndex, path, type = 'number') {
+    const displayValue = type === 'percent' ? formatPercent(value) :
+                         type === 'seconds' ? value + 's' :
+                         type === 'frequency' ? value.toFixed(1) :
+                         type === 'users' ? formatNumberShort(value) :
+                         value;
+
+    return `<span class="editable"
+                  data-bug="${bugIndex}"
+                  data-path="${path}"
+                  data-type="${type}"
+                  data-value="${value}"
+                  title="Click to edit">${displayValue}</span>`;
+}
+
+// ========== Event Handlers ==========
+
+function handleEditableClick(e) {
+    const target = e.target;
+    if (!target.classList.contains('editable')) return;
+
+    const currentValue = target.dataset.value;
+    const type = target.dataset.type;
+
+    // Create input
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.className = 'editable-input';
+    input.value = type === 'percent' ? (parseFloat(currentValue) * 100) : currentValue;
+    input.step = type === 'percent' ? '1' : type === 'frequency' ? '0.1' : '1';
+
+    // Replace span with input
+    target.replaceWith(input);
+    input.focus();
+    input.select();
+
+    // Handle blur/enter
+    const finishEdit = () => {
+        let newValue = parseFloat(input.value);
+        if (type === 'percent') newValue = newValue / 100;
+
+        if (isNaN(newValue) || newValue < 0) {
+            newValue = parseFloat(currentValue);
+        }
+
+        // Update the bug data
+        const bugIndex = parseInt(target.dataset.bug);
+        const path = target.dataset.path;
+        updateBugValue(bugIndex, path, newValue);
+
+        // Re-render
+        renderAll();
+    };
+
+    input.addEventListener('blur', finishEdit);
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            input.blur();
+        } else if (e.key === 'Escape') {
+            input.value = currentValue;
+            input.blur();
+        }
+    });
+}
+
+function updateBugValue(bugIndex, path, value) {
+    const parts = path.split('.');
+    let obj = currentBugs[bugIndex];
+
+    for (let i = 0; i < parts.length - 1; i++) {
+        const part = parts[i];
+        // Handle array notation like steps[0]
+        const arrayMatch = part.match(/(\w+)\[(\d+)\]/);
+        if (arrayMatch) {
+            obj = obj[arrayMatch[1]][parseInt(arrayMatch[2])];
+        } else {
+            obj = obj[part];
+        }
+    }
+
+    const lastPart = parts[parts.length - 1];
+    const arrayMatch = lastPart.match(/(\w+)\[(\d+)\]/);
+    if (arrayMatch) {
+        obj[arrayMatch[1]][parseInt(arrayMatch[2])] = value;
+    } else {
+        obj[lastPart] = value;
+    }
+}
+
+function resetBug(bugIndex) {
+    currentBugs[bugIndex] = JSON.parse(JSON.stringify(originalBugs[bugIndex]));
+    renderAll();
+}
+
+function resetAll() {
+    currentBugs = JSON.parse(JSON.stringify(originalBugs));
+    renderAll();
+}
+
 // ========== Renderer ==========
 
-function renderBugCard(bug, impact, index, constants) {
+function renderBugCard(bug, impact, index) {
     const card = document.createElement('article');
     card.className = 'bug-card';
+    card.id = `bug-${bug.id}`;
+
+    const isModified = JSON.stringify(currentBugs[index]) !== JSON.stringify(originalBugs[index]);
 
     card.innerHTML = `
         <!-- Header -->
         <header class="bug-header">
-            <p class="bug-number">Joke Bug #${String(index + 1).padStart(3, '0')}</p>
+            <p class="bug-number">Apple Joke Bug #${String(index + 1).padStart(3, '0')}${isModified ? '<span class="modified-indicator" title="Values modified"></span>' : ''}</p>
             <h2 class="bug-title">${bug.title}</h2>
             <p class="bug-subtitle">${bug.subtitle}</p>
             <p class="bug-description">${bug.description}</p>
@@ -268,7 +335,7 @@ function renderBugCard(bug, impact, index, constants) {
 
         <!-- Formula Breakdown -->
         <section class="bug-formula">
-            <h3 class="formula-title">The Math</h3>
+            <h3 class="formula-title">The Math <span style="font-weight: normal; text-transform: none;">(click values to edit)</span></h3>
 
             <!-- User Scope -->
             <div class="formula-scope">
@@ -280,9 +347,19 @@ function renderBugCard(bug, impact, index, constants) {
                     </div>
                 `).join('')}
                 <div class="scope-item">
-                    <p class="scope-symbol">U_total</p>
-                    <p class="scope-value">${formatNumber(impact.affectedUsers)}</p>
-                    <p class="scope-label">Total affected</p>
+                    <p class="scope-symbol">f_use</p>
+                    <p class="scope-value editable" data-bug="${index}" data-path="scope.featureUsageRate" data-type="percent" data-value="${bug.scope.featureUsageRate}" title="Click to edit">${formatPercent(bug.scope.featureUsageRate)}</p>
+                    <p class="scope-label">${bug.scope.featureUsageLabel}</p>
+                </div>
+                <div class="scope-item">
+                    <p class="scope-symbol">f_bug</p>
+                    <p class="scope-value editable" data-bug="${index}" data-path="scope.bugEncounterRate" data-type="percent" data-value="${bug.scope.bugEncounterRate}" title="Click to edit">${formatPercent(bug.scope.bugEncounterRate)}</p>
+                    <p class="scope-label">${bug.scope.bugEncounterLabel}</p>
+                </div>
+                <div class="scope-item">
+                    <p class="scope-symbol">freq</p>
+                    <p class="scope-value editable" data-bug="${index}" data-path="scope.frequencyPerDay" data-type="frequency" data-value="${bug.scope.frequencyPerDay}" title="Click to edit">${bug.scope.frequencyPerDay.toFixed(1)}/day</p>
+                    <p class="scope-label">${bug.scope.frequencyLabel}</p>
                 </div>
             </div>
 
@@ -290,7 +367,7 @@ function renderBugCard(bug, impact, index, constants) {
             <div class="formula-flow">
                 <p class="flow-title">${bug.behavioralFlow.description}</p>
                 <div class="flow-steps">
-                    ${impact.stepBreakdown.map(step => `
+                    ${impact.stepBreakdown.map((step, stepIndex) => `
                         <div class="flow-step">
                             <span class="step-symbol">${step.symbol}</span>
                             <div class="step-content">
@@ -298,7 +375,8 @@ function renderBugCard(bug, impact, index, constants) {
                                 <p class="step-description">${step.description}</p>
                             </div>
                             <div class="step-time">
-                                ${step.seconds}s${step.retries > 1 ? ` <span class="retries">× ${step.retries} retries</span>` : ''}
+                                <span class="editable" data-bug="${index}" data-path="behavioralFlow.steps[${stepIndex}].seconds" data-type="seconds" data-value="${step.seconds}" title="Click to edit">${step.seconds}s</span>
+                                ${step.retries > 1 ? `<span class="retries">× <span class="editable" data-bug="${index}" data-path="behavioralFlow.steps[${stepIndex}].retries" data-type="frequency" data-value="${step.retries}" title="Click to edit">${step.retries}</span> retries</span>` : ''}
                             </div>
                         </div>
                     `).join('')}
@@ -309,19 +387,22 @@ function renderBugCard(bug, impact, index, constants) {
             <div class="formula-tax">
                 <p class="tax-title">${bug.powerUserTax.description}</p>
                 <div class="tax-items">
-                    ${impact.taxBreakdown.map(tax => `
+                    ${impact.taxBreakdown.map((tax, taxIndex) => `
                         <div class="tax-item">
                             <div class="tax-item-left">
                                 <span class="tax-item-symbol">${tax.symbol}</span>
                                 <span class="tax-item-action">${tax.action}</span>
                             </div>
                             <div class="tax-item-right">
-                                ${formatTime(tax.seconds)} × ${(tax.participation * 100).toFixed(0)}% of users
+                                <span class="editable" data-bug="${index}" data-path="powerUserTax.sinks[${taxIndex}].seconds" data-type="seconds" data-value="${tax.seconds}" title="Click to edit">${formatTime(tax.seconds)}</span> ×
+                                <span class="editable" data-bug="${index}" data-path="powerUserTax.sinks[${taxIndex}].participation" data-type="percent" data-value="${tax.participation}" title="Click to edit">${formatPercent(tax.participation)}</span> of users
                             </div>
                         </div>
                     `).join('')}
                 </div>
             </div>
+
+            ${isModified ? `<button class="reset-button" onclick="resetBug(${index})">Reset to original values</button>` : ''}
         </section>
 
         <!-- Impact -->
@@ -341,7 +422,7 @@ function renderBugCard(bug, impact, index, constants) {
                 <div class="impact-stat">
                     <p class="impact-stat-label">Total Since Reported</p>
                     <p class="impact-stat-value time">${formatYears(impact.totalYearsSinceReported)}</p>
-                    <p class="impact-stat-note">${impact.yearsUnfixed} years of neglect</p>
+                    <p class="impact-stat-note">${impact.yearsUnfixed} years of Apple neglect</p>
                 </div>
                 <div class="impact-stat">
                     <p class="impact-stat-label">Cost to Humanity</p>
@@ -354,8 +435,8 @@ function renderBugCard(bug, impact, index, constants) {
         <!-- Verdict -->
         <section class="bug-verdict">
             <p class="verdict-text">
-                This bug could be fixed in <strong>${bug.engineeringEstimate.hoursToFix} engineering hours</strong>
-                (${bug.engineeringEstimate.teamSize} engineers, ${bug.engineeringEstimate.sprints} sprint${bug.engineeringEstimate.sprints > 1 ? 's' : ''}).
+                Apple could fix this in <strong>${bug.engineeringEstimate.hoursToFix} engineering hours</strong>
+                (${bug.engineeringEstimate.teamSize} engineer${bug.engineeringEstimate.teamSize > 1 ? 's' : ''}, ${bug.engineeringEstimate.sprints} sprint${bug.engineeringEstimate.sprints > 1 ? 's' : ''}).
                 Instead, humanity wastes that many hours every <strong>${formatTime(bug.engineeringEstimate.hoursToFix * 3600 / impact.dailyHours)}</strong>.
             </p>
         </section>
@@ -365,47 +446,53 @@ function renderBugCard(bug, impact, index, constants) {
             <div class="bug-tags">
                 ${bug.tags.map(tag => `<span class="bug-tag">${tag}</span>`).join('')}
             </div>
-            <p class="bug-date">Reported: ${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed</strong></p>
+            <p class="bug-date">Reported: ${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed by Apple</strong></p>
         </footer>
     `;
 
     return card;
 }
 
-function updateTotalImpact(bugs, impacts) {
+function updateTotalImpact(impacts) {
     const totalAnnualYears = impacts.reduce((sum, i) => sum + i.annualYears, 0);
     const totalElement = document.getElementById('total-time');
     totalElement.textContent = formatYears(totalAnnualYears) + '/year';
+}
+
+function renderAll() {
+    const engine = new FormulaEngine(constants);
+    const impacts = currentBugs.map(bug => engine.calculateImpact(bug));
+
+    const container = document.getElementById('bugs-container');
+    container.innerHTML = '';
+
+    currentBugs.forEach((bug, index) => {
+        const card = renderBugCard(bug, impacts[index], index);
+        container.appendChild(card);
+    });
+
+    updateTotalImpact(impacts);
 }
 
 // ========== Main ==========
 
 async function main() {
     try {
-        const { constants, bugs } = await loadData();
-        const engine = new FormulaEngine(constants);
+        await loadData();
+        renderAll();
 
-        // Calculate impacts
-        const impacts = bugs.map(bug => engine.calculateImpact(bug));
-
-        // Clear loading state
-        const container = document.getElementById('bugs-container');
-        container.innerHTML = '';
-
-        // Render bugs
-        bugs.forEach((bug, index) => {
-            const card = renderBugCard(bug, impacts[index], index, constants);
-            container.appendChild(card);
-        });
-
-        // Update total
-        updateTotalImpact(bugs, impacts);
+        // Add global click handler for editable values
+        document.addEventListener('click', handleEditableClick);
 
     } catch (error) {
         console.error('Failed to load data:', error);
         const container = document.getElementById('bugs-container');
-        container.innerHTML = `<p class="loading">Error loading bugs. Check console for details.</p>`;
+        container.innerHTML = `<p class="loading">Error loading Apple's bugs. Check console for details.</p>`;
     }
 }
+
+// Make functions available globally for onclick handlers
+window.resetBug = resetBug;
+window.resetAll = resetAll;
 
 main();

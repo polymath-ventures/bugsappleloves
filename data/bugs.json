@@ -80,8 +80,8 @@
           {
             "id": "rebuild_index",
             "action": "Rebuild Mail/Spotlight index",
-            "description": "The nuclear option that rarely helps",
-            "seconds": 7200,
+            "description": "Google how to do it, find the terminal command, run it, wait anxiously",
+            "seconds": 600,
             "participation": 0.03,
             "frequencyDays": 90,
             "symbol": "T_reindex"
