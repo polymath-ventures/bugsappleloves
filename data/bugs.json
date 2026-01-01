@@ -8,13 +8,13 @@
       "platforms": ["macOS", "iOS", "iPadOS"],
       "screenshot": "screenshots/mail-search.png",
       "videoUrl": null,
-      "reportedDate": "2012-09-19",
+      "reportedDate": "2012",
       "tags": ["Mail", "Search", "Gmail", "Productivity"],
 
       "scope": {
         "featureUsageRate": 0.35,
         "featureUsageLabel": "of users use Apple Mail",
-        "bugEncounterRate": 0.60,
+        "bugEncounterRate": 0.40,
         "bugEncounterLabel": "of Mail users experience search failures",
         "frequencyPerDay": 2.3,
         "frequencyLabel": "searches per day"
@@ -138,7 +138,7 @@
       "platforms": ["iOS", "iPadOS", "macOS"],
       "screenshot": "screenshots/autocorrect-insistence.png",
       "videoUrl": null,
-      "reportedDate": "2009-06-17",
+      "reportedDate": "2009",
       "tags": ["Keyboard", "Autocorrect", "Stubbornness", "Infuriating"],
 
       "scope": {
@@ -267,7 +267,7 @@
       "platforms": ["iOS", "iPadOS"],
       "screenshot": "screenshots/apple-pay-card.png",
       "videoUrl": null,
-      "reportedDate": "2018-09-17",
+      "reportedDate": "2018",
       "tags": ["Apple Pay", "UX", "Payments", "Infuriating"],
 
       "scope": {
@@ -387,7 +387,7 @@
       "platforms": ["macOS", "iOS", "iPadOS"],
       "screenshot": "screenshots/contacts-sync.png",
       "videoUrl": null,
-      "reportedDate": "2014-09-17",
+      "reportedDate": "2014",
       "tags": ["Contacts", "Google", "Sync", "iCloud", "Mystery"],
 
       "scope": {
@@ -395,7 +395,7 @@
         "featureUsageLabel": "of users sync Google contacts with Apple devices",
         "bugEncounterRate": 0.75,
         "bugEncounterLabel": "of Google contacts users experience sync issues",
-        "frequencyPerDay": 1.5,
+        "frequencyPerDay": 0.3,
         "frequencyLabel": "sync-related frustrations per day"
       },
 
@@ -525,7 +525,7 @@
       "platforms": ["macOS", "iOS", "iPadOS"],
       "screenshot": "screenshots/airdrop-looking.png",
       "videoUrl": null,
-      "reportedDate": "2013-09-18",
+      "reportedDate": "2013",
       "tags": ["AirDrop", "Bluetooth", "WiFi", "Sharing"],
 
       "scope": {
@@ -645,7 +645,7 @@
       "platforms": ["iOS", "iPadOS", "macOS"],
       "screenshot": "screenshots/icloud-photos.png",
       "videoUrl": null,
-      "reportedDate": "2015-09-16",
+      "reportedDate": "2015",
       "tags": ["iCloud", "Photos", "Sync", "Mystery"],
 
       "scope": {
@@ -766,7 +766,7 @@
       "platforms": ["macOS"],
       "screenshot": "screenshots/spotlight-indexing.png",
       "videoUrl": null,
-      "reportedDate": "2011-07-20",
+      "reportedDate": "2005",
       "tags": ["Spotlight", "Search", "Indexing", "Performance"],
 
       "scope": {
@@ -887,13 +887,13 @@
       "platforms": ["macOS", "iOS", "iPadOS"],
       "screenshot": "screenshots/hotspot-connect.png",
       "videoUrl": null,
-      "reportedDate": "2017-09-19",
+      "reportedDate": "2017",
       "tags": ["Hotspot", "WiFi", "Tethering", "Continuity"],
 
       "scope": {
         "featureUsageRate": 0.25,
         "featureUsageLabel": "of users use Personal Hotspot regularly",
-        "bugEncounterRate": 0.80,
+        "bugEncounterRate": 0.60,
         "bugEncounterLabel": "of hotspot connections require multiple attempts",
         "frequencyPerDay": 0.7,
         "frequencyLabel": "hotspot connection attempts per day"
