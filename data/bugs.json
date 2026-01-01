@@ -131,186 +131,81 @@
     },
 
     {
-      "id": "airpods-switch",
-      "title": "AirPods Switch to the Wrong Device",
-      "subtitle": "Seamless, but not in the way you want",
-      "description": "You're listening to music on your Mac. Your iPhone buzzes with a notification. Your AirPods instantly switch to your iPhone. No audio was playing on your iPhone. You didn't ask for this. Now you have to manually switch back. This happens multiple times per day.",
-      "platforms": ["macOS", "iOS", "iPadOS", "visionOS"],
-      "screenshot": "screenshots/airpods-switch.png",
-      "videoUrl": null,
-      "reportedDate": "2019-10-30",
-      "tags": ["AirPods", "Bluetooth", "Audio", "Ecosystem"],
-
-      "scope": {
-        "featureUsageRate": 0.15,
-        "featureUsageLabel": "of users own AirPods",
-        "bugEncounterRate": 0.70,
-        "bugEncounterLabel": "of multi-device AirPods users experience unwanted switching",
-        "frequencyPerDay": 4.2,
-        "frequencyLabel": "unwanted switches per day"
-      },
-
-      "behavioralFlow": {
-        "description": "The audio hijacking experience",
-        "steps": [
-          {
-            "id": "audio_stops",
-            "action": "Audio suddenly stops",
-            "description": "Your music/podcast/video goes silent mid-sentence",
-            "seconds": 2,
-            "retries": 1,
-            "symbol": "T_stop"
-          },
-          {
-            "id": "confusion",
-            "action": "Moment of confusion",
-            "description": "Wait, what happened? Did it pause?",
-            "seconds": 3,
-            "retries": 1,
-            "symbol": "T_huh"
-          },
-          {
-            "id": "check_phone",
-            "action": "Check your phone",
-            "description": "See a notification that triggered the switch",
-            "seconds": 5,
-            "retries": 1,
-            "symbol": "T_check"
-          },
-          {
-            "id": "find_control",
-            "action": "Find audio controls",
-            "description": "Open Control Center or click menu bar",
-            "seconds": 4,
-            "retries": 1.2,
-            "symbol": "T_find"
-          },
-          {
-            "id": "switch_back",
-            "action": "Switch AirPods back",
-            "description": "Manually reconnect to your original device",
-            "seconds": 6,
-            "retries": 1.3,
-            "symbol": "T_switch"
-          },
-          {
-            "id": "find_place",
-            "action": "Find your place",
-            "description": "Seek back to where you were before the interruption",
-            "seconds": 8,
-            "retries": 1,
-            "symbol": "T_seek"
-          }
-        ]
-      },
-
-      "powerUserTax": {
-        "description": "Attempts to prevent the switching madness",
-        "sinks": [
-          {
-            "id": "settings_hunt",
-            "action": "Hunt for auto-switch settings",
-            "description": "Dig through Bluetooth settings looking for options that don't exist",
-            "seconds": 600,
-            "participation": 0.25,
-            "frequencyDays": 60,
-            "symbol": "T_hunt"
-          },
-          {
-            "id": "google_disable",
-            "action": "Google how to disable auto-switching",
-            "description": "Find outdated articles about settings that have moved or been removed",
-            "seconds": 480,
-            "participation": 0.20,
-            "frequencyDays": 90,
-            "symbol": "T_google"
-          },
-          {
-            "id": "forget_devices",
-            "action": "Try forgetting and re-pairing",
-            "description": "The classic 'have you tried turning it off and on again' approach",
-            "seconds": 900,
-            "participation": 0.10,
-            "frequencyDays": 120,
-            "symbol": "T_repair"
-          }
-        ]
-      },
-
-      "shameFactors": {
-        "pressureFactor": 1.6,
-        "pressureLabel": "Audio interruptions are jarring",
-        "pressureExplanation": "1.0 = background music, 2.0 = on a call"
-      },
-
-      "engineeringEstimate": {
-        "hoursToFix": 160,
-        "teamSize": 2,
-        "sprints": 1,
-        "explanation": "Add a 'don't auto-switch' toggle. This is a settings page change."
-      }
-    },
-
-    {
-      "id": "autocorrect-its",
-      "title": "Autocorrect: 'its' → 'it's'",
-      "subtitle": "It's wrong. Every time.",
-      "description": "You type 'its' (possessive). Autocorrect changes it to 'it's' (contraction). You meant 'its'. You change it back. Send. You look at your message. It says 'it's'. It changed it AGAIN after you fixed it. You add 'its' to your dictionary. It still changes it.",
+      "id": "autocorrect-insistence",
+      "title": "Autocorrect Won't Take No For An Answer",
+      "subtitle": "You fixed it. It unfixed it. You fixed it again. It unfixed it again.",
+      "description": "You type a word. Autocorrect changes it. You delete it and type what you meant. Autocorrect changes it again. You fix it AGAIN. It changes it AGAIN. You've now manually corrected this word twice, clearly signaling you want it this way. Autocorrect doesn't care. It will die on this hill.",
       "platforms": ["iOS", "iPadOS", "macOS"],
-      "screenshot": "screenshots/autocorrect-its.png",
+      "screenshot": "screenshots/autocorrect-insistence.png",
       "videoUrl": null,
       "reportedDate": "2009-06-17",
-      "tags": ["Keyboard", "Autocorrect", "Grammar", "Embarrassing"],
+      "tags": ["Keyboard", "Autocorrect", "Stubbornness", "Infuriating"],
 
       "scope": {
         "featureUsageRate": 0.85,
         "featureUsageLabel": "of users have autocorrect enabled",
-        "bugEncounterRate": 0.40,
-        "bugEncounterLabel": "of English typists encounter this regularly",
-        "frequencyPerDay": 1.8,
-        "frequencyLabel": "its/it's incidents per day"
+        "bugEncounterRate": 0.50,
+        "bugEncounterLabel": "of users experience the re-correction loop regularly",
+        "frequencyPerDay": 2.5,
+        "frequencyLabel": "stubborn autocorrect incidents per day"
       },
 
       "behavioralFlow": {
-        "description": "The grammar humiliation cycle",
+        "description": "The autocorrect battle of wills",
         "steps": [
           {
-            "id": "type_its",
-            "action": "Type 'its' correctly",
-            "description": "You know the difference. You're not an animal.",
-            "seconds": 1,
+            "id": "type_word",
+            "action": "Type what you mean",
+            "description": "A name, technical term, slang, or just a valid word",
+            "seconds": 2,
             "retries": 1,
             "symbol": "T_type"
           },
           {
             "id": "autocorrect_strikes",
             "action": "Autocorrect 'fixes' it",
-            "description": "Silently changed to 'it's' without your consent",
+            "description": "Changed to something you didn't want",
             "seconds": 0,
             "retries": 1,
-            "symbol": "T_auto"
+            "symbol": "T_wrong"
           },
           {
-            "id": "notice",
-            "action": "Notice the change",
-            "description": "Catch it before sending (if you're lucky)",
-            "seconds": 2,
-            "retries": 1,
-            "symbol": "T_notice"
-          },
-          {
-            "id": "fix_it",
-            "action": "Fix it manually",
-            "description": "Delete and retype, or tap the autocorrect suggestion",
+            "id": "notice_fix",
+            "action": "Notice and fix it",
+            "description": "Delete and retype your original word",
             "seconds": 4,
-            "retries": 1.5,
-            "symbol": "T_fix"
+            "retries": 1,
+            "symbol": "T_fix1"
+          },
+          {
+            "id": "autocorrect_again",
+            "action": "Autocorrect changes it AGAIN",
+            "description": "It saw you fix it. It doesn't care.",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_again"
+          },
+          {
+            "id": "fix_again",
+            "action": "Fix it a second time",
+            "description": "Surely NOW it will learn?",
+            "seconds": 4,
+            "retries": 1,
+            "symbol": "T_fix2"
+          },
+          {
+            "id": "maybe_third",
+            "action": "Possibly a third round",
+            "description": "Sometimes it takes three attempts to stick",
+            "seconds": 3,
+            "retries": 1.4,
+            "symbol": "T_fix3"
           },
           {
             "id": "verify",
-            "action": "Verify it stuck",
-            "description": "Re-read to make sure it didn't change again",
-            "seconds": 2,
+            "action": "Paranoid verification",
+            "description": "Re-read the message to make sure it didn't change again",
+            "seconds": 3,
             "retries": 1,
             "symbol": "T_verify"
           }
@@ -318,23 +213,23 @@
       },
 
       "powerUserTax": {
-        "description": "Futile attempts to teach the unteachable",
+        "description": "Attempts to teach autocorrect who's boss",
         "sinks": [
           {
-            "id": "add_dictionary",
-            "action": "Add 'its' to dictionary",
-            "description": "Create a text replacement that doesn't work reliably",
-            "seconds": 120,
-            "participation": 0.30,
-            "frequencyDays": 180,
-            "symbol": "T_dict"
+            "id": "text_replacement",
+            "action": "Create text replacement shortcut",
+            "description": "Add the word to text replacements, which sometimes works",
+            "seconds": 60,
+            "participation": 0.25,
+            "frequencyDays": 30,
+            "symbol": "T_shortcut"
           },
           {
-            "id": "reset_keyboard",
+            "id": "reset_dictionary",
             "action": "Reset keyboard dictionary",
             "description": "Nuclear option that loses all your learned words",
             "seconds": 180,
-            "participation": 0.08,
+            "participation": 0.05,
             "frequencyDays": 365,
             "symbol": "T_reset"
           },
@@ -343,7 +238,7 @@
             "action": "Disable autocorrect entirely",
             "description": "Give up on the feature, suffer typos instead",
             "seconds": 60,
-            "participation": 0.15,
+            "participation": 0.12,
             "frequencyDays": 365,
             "symbol": "T_disable"
           }
@@ -351,16 +246,16 @@
       },
 
       "shameFactors": {
-        "pressureFactor": 1.3,
-        "pressureLabel": "Grammar matters in professional contexts",
-        "pressureExplanation": "1.0 = texting friends, 2.0 = email to client"
+        "pressureFactor": 1.5,
+        "pressureLabel": "Depends on context and embarrassment potential",
+        "pressureExplanation": "1.0 = casual chat, 2.0 = autocorrected your boss's name wrong"
       },
 
       "engineeringEstimate": {
-        "hoursToFix": 80,
+        "hoursToFix": 40,
         "teamSize": 1,
         "sprints": 1,
-        "explanation": "Improve context detection for possessive vs contraction. One engineer, one sprint."
+        "explanation": "If user manually corrects the same word twice, stop 'correcting' it. Simple counter."
       }
     },
 
