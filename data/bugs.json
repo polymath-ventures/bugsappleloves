@@ -515,6 +515,497 @@
         "sprints": 2,
         "explanation": "Add sync status indicator, fix the background sync, show progress. Three engineers, two sprints."
       }
+    },
+
+    {
+      "id": "airdrop-looking",
+      "title": "AirDrop: Looking for Devices...",
+      "subtitle": "They're right next to each other. They can't see each other.",
+      "description": "You want to send a photo to someone standing next to you. You open AirDrop. 'Looking for devices...' Their phone is in their hand. AirDrop is on. They're in your contacts. Nothing. You both toggle WiFi. Nothing. Toggle Bluetooth. Nothing. Turn AirDrop off and on. Sometimes it works. Usually you just text it instead.",
+      "platforms": ["macOS", "iOS", "iPadOS"],
+      "screenshot": "screenshots/airdrop-looking.png",
+      "videoUrl": null,
+      "reportedDate": "2013-09-18",
+      "tags": ["AirDrop", "Bluetooth", "WiFi", "Sharing"],
+
+      "scope": {
+        "featureUsageRate": 0.45,
+        "featureUsageLabel": "of users use AirDrop",
+        "bugEncounterRate": 0.55,
+        "bugEncounterLabel": "of AirDrop attempts have discovery issues",
+        "frequencyPerDay": 0.8,
+        "frequencyLabel": "AirDrop attempts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The device discovery dance",
+        "steps": [
+          {
+            "id": "open_airdrop",
+            "action": "Open AirDrop / Share sheet",
+            "description": "Select the thing you want to share",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_open"
+          },
+          {
+            "id": "looking",
+            "action": "Looking for devices...",
+            "description": "The spinner spins. And spins.",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_look"
+          },
+          {
+            "id": "not_there",
+            "action": "Their device doesn't appear",
+            "description": "They're literally holding it. You can see their screen.",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_missing"
+          },
+          {
+            "id": "check_settings",
+            "action": "Both check AirDrop settings",
+            "description": "Is it set to Everyone? Contacts Only? Wait, try Everyone.",
+            "seconds": 20,
+            "retries": 1.5,
+            "symbol": "T_settings"
+          },
+          {
+            "id": "toggle_things",
+            "action": "Toggle WiFi, Bluetooth, AirDrop",
+            "description": "The universal troubleshooting ritual",
+            "seconds": 30,
+            "retries": 2,
+            "symbol": "T_toggle"
+          },
+          {
+            "id": "maybe_works",
+            "action": "Maybe it appears now?",
+            "description": "Sometimes after all that, it finally shows up",
+            "seconds": 10,
+            "retries": 1,
+            "symbol": "T_maybe"
+          },
+          {
+            "id": "give_up_text",
+            "action": "Give up and text/email it",
+            "description": "The reliable fallback",
+            "seconds": 20,
+            "retries": 1,
+            "symbol": "T_text"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Arcane knowledge about AirDrop's requirements",
+        "sinks": [
+          {
+            "id": "unlock_screen",
+            "action": "Remind people to unlock their screen",
+            "description": "AirDrop requires both screens to be on and unlocked",
+            "seconds": 15,
+            "participation": 0.50,
+            "frequencyDays": 7,
+            "symbol": "T_unlock"
+          },
+          {
+            "id": "hotspot_conflict",
+            "action": "Discover Personal Hotspot conflicts",
+            "description": "Having hotspot on breaks AirDrop. Not documented anywhere.",
+            "seconds": 120,
+            "participation": 0.20,
+            "frequencyDays": 30,
+            "symbol": "T_hotspot"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.7,
+        "pressureLabel": "Usually trying to share something in the moment",
+        "pressureExplanation": "1.0 = casual, 2.0 = trying to share a photo at an event"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 240,
+        "teamSize": 2,
+        "sprints": 2,
+        "explanation": "Fix the discovery protocol, add manual IP entry fallback. Two engineers, two sprints."
+      }
+    },
+
+    {
+      "id": "icloud-photos-uploading",
+      "title": "iCloud Photos: 'Uploading X Items'",
+      "subtitle": "X has been 847 for three weeks.",
+      "description": "You took some photos. iCloud says 'Uploading 847 items'. You wait. Next day: 'Uploading 847 items'. Week later: 'Uploading 847 items'. Is it stuck? Is it working? Is there an error? There's no progress bar. No ETA. No way to know which items. Just a number that never changes. Faith-based cloud storage.",
+      "platforms": ["iOS", "iPadOS", "macOS"],
+      "screenshot": "screenshots/icloud-photos.png",
+      "videoUrl": null,
+      "reportedDate": "2015-09-16",
+      "tags": ["iCloud", "Photos", "Sync", "Mystery"],
+
+      "scope": {
+        "featureUsageRate": 0.55,
+        "featureUsageLabel": "of users use iCloud Photos",
+        "bugEncounterRate": 0.45,
+        "bugEncounterLabel": "of users see stuck/mysterious upload status",
+        "frequencyPerDay": 0.5,
+        "frequencyLabel": "times checking upload status per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The upload status anxiety loop",
+        "steps": [
+          {
+            "id": "take_photos",
+            "action": "Take photos you care about",
+            "description": "Important moments you want backed up",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_photo"
+          },
+          {
+            "id": "check_status",
+            "action": "Check iCloud status",
+            "description": "Open Photos, scroll to bottom, see the message",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_check"
+          },
+          {
+            "id": "see_number",
+            "action": "See 'Uploading X items'",
+            "description": "A number with no context",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_number"
+          },
+          {
+            "id": "wait_check_again",
+            "action": "Wait and check again later",
+            "description": "Maybe it changed? Probably not.",
+            "seconds": 20,
+            "retries": 3,
+            "symbol": "T_wait"
+          },
+          {
+            "id": "wonder",
+            "action": "Wonder if it's stuck",
+            "description": "The number hasn't changed in days",
+            "seconds": 10,
+            "retries": 1,
+            "symbol": "T_wonder"
+          },
+          {
+            "id": "try_fixes",
+            "action": "Try random fixes",
+            "description": "Toggle iCloud off/on, restart phone, connect to WiFi",
+            "seconds": 60,
+            "retries": 1,
+            "symbol": "T_fix"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Desperate verification attempts",
+        "sinks": [
+          {
+            "id": "check_web",
+            "action": "Check icloud.com/photos",
+            "description": "Log into web to verify photos actually uploaded",
+            "seconds": 120,
+            "participation": 0.35,
+            "frequencyDays": 14,
+            "symbol": "T_web"
+          },
+          {
+            "id": "storage_check",
+            "action": "Check iCloud storage usage",
+            "description": "Try to understand if uploads are actually happening",
+            "seconds": 60,
+            "participation": 0.40,
+            "frequencyDays": 7,
+            "symbol": "T_storage"
+          },
+          {
+            "id": "disable_reenable",
+            "action": "Disable and re-enable iCloud Photos",
+            "description": "Nuclear option that may cause duplicates",
+            "seconds": 300,
+            "participation": 0.10,
+            "frequencyDays": 90,
+            "symbol": "T_nuclear"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.4,
+        "pressureLabel": "Photos are precious memories",
+        "pressureExplanation": "1.0 = random screenshots, 2.0 = only copy of important event"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 120,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Add a real progress bar, show which items, show errors. Two engineers, one sprint."
+      }
+    },
+
+    {
+      "id": "spotlight-indexing",
+      "title": "Spotlight: 'Indexing...'",
+      "subtitle": "Apple really can't do search.",
+      "description": "You press Cmd+Space to search. Nothing comes up. Or it's slow. You check: Spotlight is 'Indexing'. It's been 'Indexing' for two days. Your laptop isn't new. Nothing changed. It just decided to re-index everything. Meanwhile, search doesn't work. You can't find apps, files, or emails. The computer is slow because Spotlight is churning in the background.",
+      "platforms": ["macOS"],
+      "screenshot": "screenshots/spotlight-indexing.png",
+      "videoUrl": null,
+      "reportedDate": "2011-07-20",
+      "tags": ["Spotlight", "Search", "Indexing", "Performance"],
+
+      "scope": {
+        "featureUsageRate": 0.80,
+        "featureUsageLabel": "of Mac users rely on Spotlight",
+        "bugEncounterRate": 0.35,
+        "bugEncounterLabel": "of users experience stuck indexing annually",
+        "frequencyPerDay": 0.02,
+        "frequencyLabel": "indexing issues per day (when it happens, it lasts days)"
+      },
+
+      "behavioralFlow": {
+        "description": "The search paralysis experience",
+        "steps": [
+          {
+            "id": "try_search",
+            "action": "Try to search for something",
+            "description": "Cmd+Space, type what you need",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_search"
+          },
+          {
+            "id": "no_results",
+            "action": "No results or very slow",
+            "description": "The thing you know exists doesn't appear",
+            "seconds": 10,
+            "retries": 2,
+            "symbol": "T_slow"
+          },
+          {
+            "id": "check_status",
+            "action": "Check Spotlight status",
+            "description": "System Preferences > Spotlight, or click menu bar",
+            "seconds": 30,
+            "retries": 1,
+            "symbol": "T_status"
+          },
+          {
+            "id": "see_indexing",
+            "action": "See 'Indexing...' message",
+            "description": "Estimated time remaining: Unknown",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_index"
+          },
+          {
+            "id": "wait_days",
+            "action": "Wait... for days",
+            "description": "It can take 1-3 days to finish",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_wait"
+          },
+          {
+            "id": "manual_find",
+            "action": "Manually navigate to find things",
+            "description": "Use Finder like an animal",
+            "seconds": 45,
+            "retries": 1,
+            "symbol": "T_manual"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Terminal commands and prayers",
+        "sinks": [
+          {
+            "id": "rebuild_index",
+            "action": "Manually rebuild Spotlight index",
+            "description": "Add drive to Privacy list, remove it, wait",
+            "seconds": 300,
+            "participation": 0.30,
+            "frequencyDays": 180,
+            "symbol": "T_rebuild"
+          },
+          {
+            "id": "terminal_commands",
+            "action": "Run mdutil commands in Terminal",
+            "description": "sudo mdutil -E / and hope for the best",
+            "seconds": 180,
+            "participation": 0.15,
+            "frequencyDays": 180,
+            "symbol": "T_mdutil"
+          },
+          {
+            "id": "third_party",
+            "action": "Install Alfred or Raycast",
+            "description": "Give up on Spotlight entirely",
+            "seconds": 900,
+            "participation": 0.20,
+            "frequencyDays": 365,
+            "symbol": "T_alfred"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.8,
+        "pressureLabel": "Search is essential for productivity",
+        "pressureExplanation": "1.0 = casual file lookup, 2.0 = can't find critical document"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 400,
+        "teamSize": 3,
+        "sprints": 2,
+        "explanation": "Fix incremental indexing, show real progress, don't re-index unnecessarily. Three engineers, two sprints."
+      }
+    },
+
+    {
+      "id": "hotspot-auto-connect",
+      "title": "Personal Hotspot Won't Auto-Connect",
+      "subtitle": "Three attempts. Every time. When you need it most.",
+      "description": "You're at a coffee shop with no WiFi. Your laptop says it will 'automatically' connect to your iPhone's hotspot. It tries. It fails. You click it again. 'Connection failed.' You turn hotspot off and on. Try again. Failed. You unlock your phone, open Settings, stare at the Hotspot screen to 'activate' it. Finally, third or fourth attempt, it connects. This happens every single time.",
+      "platforms": ["macOS", "iOS", "iPadOS"],
+      "screenshot": "screenshots/hotspot-connect.png",
+      "videoUrl": null,
+      "reportedDate": "2017-09-19",
+      "tags": ["Hotspot", "WiFi", "Tethering", "Continuity"],
+
+      "scope": {
+        "featureUsageRate": 0.25,
+        "featureUsageLabel": "of users use Personal Hotspot regularly",
+        "bugEncounterRate": 0.80,
+        "bugEncounterLabel": "of hotspot connections require multiple attempts",
+        "frequencyPerDay": 0.7,
+        "frequencyLabel": "hotspot connection attempts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The hotspot connection ritual",
+        "steps": [
+          {
+            "id": "need_internet",
+            "action": "Need internet, no WiFi available",
+            "description": "You're somewhere without WiFi, need to work",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_need"
+          },
+          {
+            "id": "click_hotspot",
+            "action": "Click iPhone hotspot in WiFi menu",
+            "description": "It's right there in the list",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_click"
+          },
+          {
+            "id": "connecting",
+            "action": "Connecting...",
+            "description": "Spinner spins hopefully",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_spin"
+          },
+          {
+            "id": "failed",
+            "action": "Connection failed",
+            "description": "No explanation. Just failed.",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_fail"
+          },
+          {
+            "id": "try_again",
+            "action": "Try again",
+            "description": "Click it again, same result",
+            "seconds": 18,
+            "retries": 1.5,
+            "symbol": "T_retry"
+          },
+          {
+            "id": "unlock_phone",
+            "action": "Unlock phone, open Hotspot settings",
+            "description": "The secret ritual: staring at the hotspot screen 'activates' it",
+            "seconds": 10,
+            "retries": 1,
+            "symbol": "T_unlock"
+          },
+          {
+            "id": "try_third_time",
+            "action": "Try connection a third time",
+            "description": "Now it works. Why? Nobody knows.",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_third"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Workarounds that shouldn't be necessary",
+        "sinks": [
+          {
+            "id": "keep_screen_on",
+            "action": "Keep phone hotspot screen open",
+            "description": "Leave phone with hotspot settings visible to maintain connection",
+            "seconds": 0,
+            "participation": 0.60,
+            "frequencyDays": 1,
+            "symbol": "T_screen"
+          },
+          {
+            "id": "forget_rejoin",
+            "action": "Forget network and rejoin",
+            "description": "Delete the hotspot from saved networks, add fresh",
+            "seconds": 60,
+            "participation": 0.25,
+            "frequencyDays": 30,
+            "symbol": "T_forget"
+          },
+          {
+            "id": "usb_tether",
+            "action": "Give up and use USB tethering",
+            "description": "Plug in cable, hope that works",
+            "seconds": 30,
+            "participation": 0.30,
+            "frequencyDays": 7,
+            "symbol": "T_usb"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 2.0,
+        "pressureLabel": "Need internet NOW to get work done",
+        "pressureExplanation": "1.0 = casual browsing, 2.0 = on a deadline away from real WiFi"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 200,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Fix the Bluetooth/WiFi handshake, make auto-connect actually automatic. Two engineers, one sprint."
+      }
     }
   ]
 }
