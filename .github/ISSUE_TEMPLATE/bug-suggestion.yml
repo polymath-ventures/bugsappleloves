@@ -1,0 +1,96 @@
+name: Suggest an Apple Bug
+description: Know an Apple bug that's been unfixed for years? Tell us about it.
+title: "[Bug Suggestion] "
+labels: ["bug-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a bug! The best suggestions are bugs that:
+        - Have been unfixed for **years** (not months)
+        - Affect a **significant number** of users
+        - Are **reproducible** and well-documented
+        - Make you wonder if Apple is joking
+
+  - type: input
+    id: title
+    attributes:
+      label: Bug Title
+      description: A short, punchy name for the bug
+      placeholder: "e.g., AirDrop: Looking for Devices..."
+    validations:
+      required: true
+
+  - type: input
+    id: subtitle
+    attributes:
+      label: Subtitle / Tagline
+      description: A snarky one-liner about the bug
+      placeholder: "e.g., They're right next to each other. They can't see each other."
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the bug and the frustrating user experience
+      placeholder: "You want to send a photo to someone standing next to you..."
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: platforms
+    attributes:
+      label: Affected Platforms
+      options:
+        - label: macOS
+        - label: iOS
+        - label: iPadOS
+        - label: visionOS
+        - label: watchOS
+
+  - type: input
+    id: earliest_report
+    attributes:
+      label: Earliest Known Report
+      description: Link to the oldest forum post, Reddit thread, or article about this bug
+      placeholder: "https://discussions.apple.com/thread/..."
+    validations:
+      required: false
+
+  - type: input
+    id: years_unfixed
+    attributes:
+      label: Approximately how long has this been unfixed?
+      placeholder: "e.g., 5+ years, since iOS 12"
+    validations:
+      required: true
+
+  - type: textarea
+    id: workarounds
+    attributes:
+      label: Common Workarounds
+      description: What do people do to work around this bug?
+      placeholder: "- Toggle WiFi off and on\n- Restart the device\n- Give up and use a different method"
+    validations:
+      required: false
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / Links
+      description: Forum posts, Reddit threads, articles, tweets, etc. showing this is a widespread issue
+      placeholder: "- https://reddit.com/r/apple/...\n- https://discussions.apple.com/..."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I've experienced this bug myself
+          required: true
+        - label: This bug has been unfixed for at least 2 years
+          required: true

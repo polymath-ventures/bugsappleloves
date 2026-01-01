@@ -1,0 +1,52 @@
+name: Earlier Bug Sighting
+description: Found an earlier report of a bug we already list? Help us verify the date.
+title: "[Date Correction] "
+labels: ["date-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us improve the accuracy of our bug dates! If you found an earlier report of a bug we already have on the site, submit it here.
+
+  - type: dropdown
+    id: bug
+    attributes:
+      label: Which bug?
+      options:
+        - Mail Search Doesn't Work
+        - Autocorrect Won't Take No For An Answer
+        - "Apple Pay: Card Icon Changes Address"
+        - Google Contacts Sync is a Black Hole
+        - "AirDrop: Looking for Devices..."
+        - "iCloud Photos: 'Uploading X Items'"
+        - "Spotlight: 'Indexing...'"
+        - Personal Hotspot Won't Auto-Connect
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Link to Earlier Report
+      description: URL to a forum post, article, or thread from before our current date
+      placeholder: "https://discussions.apple.com/thread/..."
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Date of Report
+      description: When was this report posted?
+      placeholder: "2014-03-15 or March 2014"
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any context about why this is a valid earlier sighting
+    validations:
+      required: false

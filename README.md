@@ -60,7 +60,29 @@ The verdict shows how many hours humanity wastes every second, compared to the e
 
 ## Contributing
 
-Have an Apple bug to add? [Open an issue](https://github.com/polymath-ventures/applejokebugs/issues) or submit a PR.
+### Suggest a bug
+
+Know an Apple bug that's been unfixed for years? [Open an issue](https://github.com/polymath-ventures/applejokebugs/issues/new/choose) using the "Suggest an Apple Bug" template. The best suggestions:
+
+- Have been unfixed for **2+ years**
+- Affect a **significant number** of users
+- Are **reproducible** and well-documented
+- Include links to forum posts or articles as evidence
+
+### Submit a bug directly (PR)
+
+If you're comfortable with JSON, you can add a bug yourself:
+
+1. Fork the repo
+2. Add an entry to `data/bugs.json` following the existing schema
+3. Include all required fields (see existing bugs for reference)
+4. Add a screenshot to `screenshots/` (optional but nice)
+5. Test locally by opening `index.html`
+6. Submit a PR
+
+### Help verify dates
+
+Our bug dates are estimates. If you find an earlier report of a bug we list, [submit an "Earlier Bug Sighting"](https://github.com/polymath-ventures/applejokebugs/issues/new/choose) issue with a link to the forum post or article.
 
 ## Disclaimer
 
