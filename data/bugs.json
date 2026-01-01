@@ -377,6 +377,144 @@
         "sprints": 1,
         "explanation": "Move the card icon to the payment button. Literally one icon swap."
       }
+    },
+
+    {
+      "id": "contacts-google-sync",
+      "title": "Google Contacts Sync is a Black Hole",
+      "subtitle": "It's syncing. Or is it? Nobody knows.",
+      "description": "You add a contact on your Mac. Open your iPhone. It's not there. Check your Mac again. Still there. Check your iPhone in an hour. Maybe it's there now? You edit a contact on your phone. The change doesn't appear on your Mac. Or it does, but three days later. The Contacts app freezes for 30 seconds while 'syncing' in the background. There's no progress indicator. No status. Just faith.",
+      "platforms": ["macOS", "iOS", "iPadOS"],
+      "screenshot": "screenshots/contacts-sync.png",
+      "videoUrl": null,
+      "reportedDate": "2014-09-17",
+      "tags": ["Contacts", "Google", "Sync", "iCloud", "Mystery"],
+
+      "scope": {
+        "featureUsageRate": 0.30,
+        "featureUsageLabel": "of users sync Google contacts with Apple devices",
+        "bugEncounterRate": 0.75,
+        "bugEncounterLabel": "of Google contacts users experience sync issues",
+        "frequencyPerDay": 1.5,
+        "frequencyLabel": "sync-related frustrations per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The contact sync mystery",
+        "steps": [
+          {
+            "id": "add_contact",
+            "action": "Add or edit a contact",
+            "description": "Create a new contact or update an existing one",
+            "seconds": 30,
+            "retries": 1,
+            "symbol": "T_edit"
+          },
+          {
+            "id": "check_other_device",
+            "action": "Check another device",
+            "description": "Open Contacts on your other Apple device",
+            "seconds": 10,
+            "retries": 1,
+            "symbol": "T_check"
+          },
+          {
+            "id": "not_there",
+            "action": "It's not there",
+            "description": "The change hasn't synced. Or has it?",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_missing"
+          },
+          {
+            "id": "pull_refresh",
+            "action": "Pull to refresh / force sync",
+            "description": "Try to manually trigger a sync somehow",
+            "seconds": 15,
+            "retries": 2,
+            "symbol": "T_refresh"
+          },
+          {
+            "id": "wait_freeze",
+            "action": "App freezes during 'sync'",
+            "description": "Contacts becomes unresponsive for 30+ seconds",
+            "seconds": 35,
+            "retries": 1,
+            "symbol": "T_freeze"
+          },
+          {
+            "id": "still_not_there",
+            "action": "Still not synced",
+            "description": "After all that, the change still isn't visible",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_still"
+          },
+          {
+            "id": "give_up",
+            "action": "Give up and wait",
+            "description": "Hope it eventually syncs on its own",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_hope"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Desperate attempts to make sync work",
+        "sinks": [
+          {
+            "id": "toggle_account",
+            "action": "Toggle Google account off and on",
+            "description": "Disable and re-enable the account in Settings",
+            "seconds": 120,
+            "participation": 0.35,
+            "frequencyDays": 14,
+            "symbol": "T_toggle"
+          },
+          {
+            "id": "remove_readd",
+            "action": "Remove and re-add Google account",
+            "description": "Nuclear option that sometimes helps temporarily",
+            "seconds": 300,
+            "participation": 0.15,
+            "frequencyDays": 60,
+            "symbol": "T_readd"
+          },
+          {
+            "id": "google_contacts_web",
+            "action": "Check Google Contacts website",
+            "description": "Verify if the contact is at least on Google's servers",
+            "seconds": 90,
+            "participation": 0.40,
+            "frequencyDays": 7,
+            "symbol": "T_web"
+          },
+          {
+            "id": "duplicate_cleanup",
+            "action": "Clean up duplicate contacts",
+            "description": "Sync creates duplicates that need manual merging",
+            "seconds": 600,
+            "participation": 0.25,
+            "frequencyDays": 90,
+            "symbol": "T_dupes"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.6,
+        "pressureLabel": "Contact info is needed when you need it",
+        "pressureExplanation": "1.0 = casual lookup, 2.0 = need to call someone urgently"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 480,
+        "teamSize": 3,
+        "sprints": 2,
+        "explanation": "Add sync status indicator, fix the background sync, show progress. Three engineers, two sprints."
+      }
     }
   ]
 }
