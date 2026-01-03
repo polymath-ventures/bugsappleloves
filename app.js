@@ -197,9 +197,9 @@ function formatMoney(dollars) {
 }
 
 function formatDate(dateStr) {
-    // If it's just a year (4 digits), show "Since [year]"
+    // If it's just a year (4 digits), show approximate phrasing
     if (/^\d{4}$/.test(dateStr)) {
-        return `Since ${dateStr}`;
+        return `Around since ~${dateStr}`;
     }
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
