@@ -197,6 +197,10 @@ function formatMoney(dollars) {
 }
 
 function formatDate(dateStr) {
+    // If it's just a year (4 digits), show approximate phrasing
+    if (/^\d{4}$/.test(dateStr)) {
+        return `Around since ~${dateStr}`;
+    }
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
@@ -461,7 +465,7 @@ function renderBugCard(bug, impact, index) {
             <div class="bug-tags">
                 ${bug.tags.map(tag => `<span class="bug-tag">${tag}</span>`).join('')}
             </div>
-            <p class="bug-date">Reported: ${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed by Apple</strong></p>
+            <p class="bug-date">${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed by Apple</strong></p>
         </footer>
     `;
 
