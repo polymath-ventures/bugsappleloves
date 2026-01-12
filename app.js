@@ -346,11 +346,13 @@ function renderBugCard(bug, impact, index) {
             </div>
         </header>
 
-        <!-- Screenshot -->
+        <!-- Media (only shown if screenshot or video exists) -->
+        ${bug.screenshot || bug.videoUrl ? `
         <div class="bug-media">
-            <div class="bug-screenshot-placeholder">Screenshot: ${bug.screenshot}</div>
+            ${bug.screenshot ? `<img src="${bug.screenshot}" alt="${bug.title}" class="bug-screenshot" onerror="this.parentElement.style.display='none'">` : ''}
             ${bug.videoUrl ? `<a href="${bug.videoUrl}" target="_blank" class="bug-video-link">Watch video</a>` : ''}
         </div>
+        ` : ''}
 
         <!-- Formula Breakdown -->
         <section class="bug-formula">
