@@ -1006,6 +1006,118 @@
         "sprints": 1,
         "explanation": "Fix the Bluetooth/WiFi handshake, make auto-connect actually automatic. Two engineers, one sprint."
       }
+    },
+
+    {
+      "id": "window-resize-tahoe",
+      "title": "Window Resizing Doesn't Work",
+      "subtitle": "The corner is there. You just can't click it.",
+      "description": "You try to resize a window by grabbing the corner. You miss. You try again. Miss. You hover precisely where the corner should be. Nothing. Turns out the resize target is a tiny 19×19 pixel zone, but thanks to Tahoe's huge corner radius, 75% of it is outside the visible window. You have to click in empty space next to the window to resize it. Intuitive.",
+      "platforms": ["macOS"],
+      "screenshot": "screenshots/clickable-area-1.webp",
+      "videoUrl": null,
+      "reportedDate": "2025",
+      "tags": ["macOS", "Window Management", "UX", "Tahoe"],
+
+      "scope": {
+        "featureUsageRate": 0.90,
+        "featureUsageLabel": "of Mac users resize windows",
+        "bugEncounterRate": 0.70,
+        "bugEncounterLabel": "of resize attempts miss on first try",
+        "frequencyPerDay": 8.0,
+        "frequencyLabel": "window resize attempts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The corner-hunting ritual",
+        "steps": [
+          {
+            "id": "want_resize",
+            "action": "Want to resize a window",
+            "description": "Need to make a window bigger or smaller",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_want"
+          },
+          {
+            "id": "aim_corner",
+            "action": "Aim for the corner",
+            "description": "Move cursor to where the corner visually is",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_aim"
+          },
+          {
+            "id": "click_miss",
+            "action": "Click and drag... nothing",
+            "description": "The window doesn't resize. You clicked inside the window.",
+            "seconds": 2,
+            "retries": 2.5,
+            "symbol": "T_miss"
+          },
+          {
+            "id": "hunt_hotspot",
+            "action": "Hunt for the invisible hotspot",
+            "description": "Move cursor around trying to find the magic pixel",
+            "seconds": 3,
+            "retries": 1.5,
+            "symbol": "T_hunt"
+          },
+          {
+            "id": "find_outside",
+            "action": "Discover it's outside the window",
+            "description": "Finally grab it by clicking in empty space",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_outside"
+          },
+          {
+            "id": "resize_finally",
+            "action": "Finally resize",
+            "description": "Drag to desired size",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_resize"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Workarounds for people who resize a lot",
+        "sinks": [
+          {
+            "id": "keyboard_resize",
+            "action": "Learn keyboard shortcuts",
+            "description": "Use third-party tools like Rectangle for keyboard resizing",
+            "seconds": 600,
+            "participation": 0.25,
+            "frequencyDays": 365,
+            "symbol": "T_keyboard"
+          },
+          {
+            "id": "edge_resize",
+            "action": "Use edges instead of corners",
+            "description": "Give up on corners, only resize from edges",
+            "seconds": 5,
+            "participation": 0.40,
+            "frequencyDays": 1,
+            "symbol": "T_edge"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.3,
+        "pressureLabel": "Window management is constant",
+        "pressureExplanation": "1.0 = casual browsing, 2.0 = presenting to someone"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 16,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Expand the resize hitbox to match visual expectations. One engineer, a few days."
+      }
     }
   ]
 }
