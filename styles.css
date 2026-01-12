@@ -549,6 +549,53 @@ body {
     margin-top: var(--space-sm);
 }
 
+/* The Equation */
+.bug-equation {
+    padding: var(--space-xl);
+    background: var(--bg-tertiary);
+    text-align: center;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.equation-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-lg);
+}
+
+.equation-display {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.equation-math {
+    display: block;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    padding: var(--space-lg);
+    border-radius: 8px;
+    margin-bottom: var(--space-md);
+    overflow-x: auto;
+}
+
+.equation-math sub {
+    font-size: 0.7em;
+    color: var(--accent);
+}
+
+.equation-result {
+    font-size: clamp(16px, 3vw, 20px);
+    color: var(--text-tertiary);
+}
+
+.equation-result strong {
+    color: var(--impact-red);
+}
+
 /* The Verdict */
 .bug-verdict {
     padding: var(--space-xl);
@@ -603,6 +650,21 @@ body {
 
 .bug-date strong {
     color: var(--impact-red);
+}
+
+.bug-source {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: var(--space-sm);
+}
+
+.bug-source a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.bug-source a:hover {
+    text-decoration: underline;
 }
 
 /* ========== Footer ========== */

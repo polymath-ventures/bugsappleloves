@@ -453,11 +453,23 @@ function renderBugCard(bug, impact, index) {
             </div>
         </section>
 
+        <!-- The Equation -->
+        <section class="bug-equation">
+            <h3 class="equation-title">The Equation</h3>
+            <div class="equation-display">
+                <code class="equation-math">
+                    Daily Impact = (${Object.keys(impact.userBreakdown).map(p => `U<sub>${p.replace('OS','')}</sub>`).join(' + ')}) × f<sub>use</sub> × f<sub>bug</sub> × f<sub>day</sub> × T<sub>incident</sub> × P<sub>shame</sub>
+                </code>
+                <p class="equation-result">
+                    = ${formatNumber(Math.round(impact.dailyHours))} hours/day = <strong>${formatNumber(Math.round(impact.dailyHours / 86400 * 100) / 100)} hours/second</strong>
+                </p>
+            </div>
+        </section>
+
         <!-- Verdict -->
         <section class="bug-verdict">
             <p class="verdict-text">
-                Apple could fix this in <strong>${bug.engineeringEstimate.hoursToFix} engineering hours</strong>
-                (${bug.engineeringEstimate.teamSize} engineer${bug.engineeringEstimate.teamSize > 1 ? 's' : ''}, ${bug.engineeringEstimate.sprints} sprint${bug.engineeringEstimate.sprints > 1 ? 's' : ''}).
+                According to our completely made-up estimates, Apple could fix this in <strong>${bug.engineeringEstimate.hoursToFix} engineering hours</strong>.
                 Instead, humanity wastes <strong>${formatNumber(Math.round(impact.dailyHours / 86400 * 100) / 100)} hours every second</strong>.
             </p>
         </section>
@@ -468,6 +480,7 @@ function renderBugCard(bug, impact, index) {
                 ${bug.tags.map(tag => `<span class="bug-tag">${tag}</span>`).join('')}
             </div>
             <p class="bug-date">${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed by Apple</strong></p>
+            ${bug.sourceUrl ? `<p class="bug-source">Source: <a href="${bug.sourceUrl}" target="_blank">${bug.sourceLabel || bug.sourceUrl}</a></p>` : ''}
         </footer>
     `;
 
