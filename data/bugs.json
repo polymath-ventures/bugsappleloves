@@ -1120,6 +1120,127 @@
         "sprints": 1,
         "explanation": "Expand the resize hitbox to match visual expectations. One engineer, a few days."
       }
+    },
+
+    {
+      "id": "watch-widgets-stale",
+      "title": "Apple Watch Widgets Won't Let Go",
+      "subtitle": "You deleted that appointment. Your Watch didn't get the memo.",
+      "description": "You delete a calendar event on your iPhone. You check your Watch. The event is still there. You wait. Still there. You open the Calendar app on your Watch — gone. But the widget? It's committed to that 2pm meeting you cancelled three hours ago. Widgets update when they feel like it. Which is never.",
+      "platforms": ["watchOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2018",
+      "tags": ["Apple Watch", "Widgets", "Calendar", "Sync", "Stale Data"],
+
+      "scope": {
+        "featureUsageRate": 0.70,
+        "featureUsageLabel": "of Apple Watch users use widgets",
+        "bugEncounterRate": 0.65,
+        "bugEncounterLabel": "of widget users see stale data regularly",
+        "frequencyPerDay": 3.0,
+        "frequencyLabel": "glances at stale widgets per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The stale widget experience",
+        "steps": [
+          {
+            "id": "delete_event",
+            "action": "Delete or modify an event",
+            "description": "Cancel that meeting on your iPhone or Mac",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_delete"
+          },
+          {
+            "id": "glance_watch",
+            "action": "Glance at your Watch",
+            "description": "Check your schedule on the widget",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_glance"
+          },
+          {
+            "id": "see_old_event",
+            "action": "See the deleted event",
+            "description": "It's still there. Mocking you.",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_stale"
+          },
+          {
+            "id": "wait_refresh",
+            "action": "Wait for it to refresh",
+            "description": "Maybe if I look away and look back...",
+            "seconds": 10,
+            "retries": 2,
+            "symbol": "T_wait"
+          },
+          {
+            "id": "open_app",
+            "action": "Open the actual Calendar app",
+            "description": "The app shows correct data. Widget doesn't.",
+            "seconds": 8,
+            "retries": 1,
+            "symbol": "T_app"
+          },
+          {
+            "id": "give_up",
+            "action": "Give up and ignore widget",
+            "description": "Learn to distrust everything on your wrist",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_distrust"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Attempts to force widget updates",
+        "sinks": [
+          {
+            "id": "restart_watch",
+            "action": "Restart Apple Watch",
+            "description": "Turn it off and on again, the nuclear option",
+            "seconds": 180,
+            "participation": 0.15,
+            "frequencyDays": 30,
+            "symbol": "T_restart"
+          },
+          {
+            "id": "remove_readd_widget",
+            "action": "Remove and re-add widget",
+            "description": "Maybe a fresh widget will behave",
+            "seconds": 60,
+            "participation": 0.20,
+            "frequencyDays": 60,
+            "symbol": "T_readd"
+          },
+          {
+            "id": "open_close_app",
+            "action": "Open app to 'wake up' widget",
+            "description": "Launch the app hoping the widget notices",
+            "seconds": 15,
+            "participation": 0.50,
+            "frequencyDays": 3,
+            "symbol": "T_wake"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.5,
+        "pressureLabel": "Widgets are for quick glances",
+        "pressureExplanation": "1.0 = checking casually, 2.0 = checking if you're late"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 80,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Push updates to widgets when data changes. Two engineers, one sprint."
+      }
     }
   ]
 }
