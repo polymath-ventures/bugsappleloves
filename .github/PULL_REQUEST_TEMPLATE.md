@@ -1,28 +1,11 @@
-# Pull Request
+## What bug are you adding?
 
-## What does this PR do?
+<!-- Brief description of the Apple bug -->
 
-<!-- Describe your changes -->
+## How long has it been unfixed?
 
-## Type of change
+<!-- Rough estimate is fine -->
 
-- [ ] New bug submission
-- [ ] Date/source correction
-- [ ] Formula improvement
-- [ ] Site feature/fix
-- [ ] Documentation
+## Any evidence?
 
-## For new bug submissions
-
-If you're adding a new bug to `data/bugs.json`:
-
-- [ ] Bug has been unfixed for 2+ years
-- [ ] Included all required fields (see existing bugs for schema)
-- [ ] Added links to forum posts or articles as evidence
-- [ ] Tested locally by opening index.html
-
-## Checklist
-
-- [ ] I've tested my changes locally
-- [ ] My changes don't break existing functionality
-- [ ] I've updated documentation if needed
+<!-- Optional: links to forum posts, Reddit threads, articles, etc. -->
