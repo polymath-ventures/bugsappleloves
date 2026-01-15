@@ -94,6 +94,13 @@ body {
     line-height: 1.4;
 }
 
+.hero-asterisk {
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-top: var(--space-lg);
+    font-style: italic;
+}
+
 /* ========== Total Impact Section ========== */
 .total-impact {
     padding: var(--space-2xl) var(--container-padding);
