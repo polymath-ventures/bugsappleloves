@@ -19,6 +19,11 @@
       "count": 500000,
       "label": "visionOS users",
       "symbol": "U_vision"
+    },
+    "watchOS": {
+      "count": 150000000,
+      "label": "Apple Watch users",
+      "symbol": "U_watch"
     }
   },
   "appleFacts": {
