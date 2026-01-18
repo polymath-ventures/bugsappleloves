@@ -1245,21 +1245,21 @@
 
     {
       "id": "ios-text-selection",
-      "title": "iOS Text Selection is Chaos",
+      "title": "iOS Text Selection is Pure Chaos",
       "subtitle": "You just wanted to move the cursor. Now everything is selected.",
-      "description": "You want to position the cursor at the end of a line. You tap. It selects the last word. You try to grab the handle — it doesn't respond and deselects. You tap again, now it selects the whole sentence. You tap blank space to deselect — nothing. You tap five more times. On the fifth, it selects all. You switch apps hoping the selection disappears. You tap and hold — sometimes text selects, sometimes a menu appears, sometimes nothing. Eventually you select all, delete everything, and retype from scratch.",
+      "description": "You want to position the cursor at the end of a line. You tap. It selects the last word. You try to grab the handle — it doesn't respond and deselects. You tap again, now it selects the whole sentence. You tap blank space to deselect — nothing. You tap five more times. On the fifth, it selects all. You switch apps hoping the selection disappears. You tap and hold — sometimes text selects, sometimes a menu appears, sometimes nothing. Got a Magic Keyboard? Good luck — trackpad selection just doesn't work half the time, but touching the screen does. Eventually you select all, delete everything, and retype from scratch. Apple has had 17 years to figure out touch text selection. This is where they landed.",
       "platforms": ["iOS", "iPadOS"],
       "screenshot": null,
       "videoUrl": null,
-      "reportedDate": "2015",
-      "tags": ["iOS", "Text Selection", "Cursor", "UX", "Maddening"],
+      "reportedDate": "2007",
+      "tags": ["iOS", "Text Selection", "Cursor", "UX", "Maddening", "Magic Keyboard"],
 
       "scope": {
         "featureUsageRate": 0.95,
         "featureUsageLabel": "of users edit text on iOS",
-        "bugEncounterRate": 0.75,
+        "bugEncounterRate": 0.80,
         "bugEncounterLabel": "of text editing sessions involve selection frustration",
-        "frequencyPerDay": 5.0,
+        "frequencyPerDay": 8.0,
         "frequencyLabel": "text selection battles per day"
       },
 
@@ -1285,17 +1285,25 @@
           {
             "id": "grab_handle",
             "action": "Try to grab selection handle",
-            "description": "Your finger is on it. It doesn't respond.",
+            "description": "Your finger is clearly on it. It doesn't respond.",
             "seconds": 3,
-            "retries": 2,
+            "retries": 2.5,
             "symbol": "T_handle"
+          },
+          {
+            "id": "handle_jumps",
+            "action": "Handle jumps to wrong position",
+            "description": "You moved it one word. It jumped three lines.",
+            "seconds": 4,
+            "retries": 2,
+            "symbol": "T_jump"
           },
           {
             "id": "deselect_fail",
             "action": "Tap to deselect",
-            "description": "Tap blank space. Nothing happens. Or it selects more.",
+            "description": "Tap blank space. Nothing. Tap again. Nothing. Again. It selects more.",
             "seconds": 2,
-            "retries": 4,
+            "retries": 5,
             "symbol": "T_deselect"
           },
           {
@@ -1334,33 +1342,42 @@
             "action": "Use keyboard trackpad mode",
             "description": "Hold spacebar to move cursor — if you know it exists",
             "seconds": 3,
-            "participation": 0.20,
+            "participation": 0.25,
             "frequencyDays": 1,
             "symbol": "T_trackpad"
           },
           {
-            "id": "external_keyboard",
-            "action": "Connect external keyboard",
-            "description": "Give up on touch entirely",
-            "seconds": 60,
-            "participation": 0.10,
-            "frequencyDays": 30,
-            "symbol": "T_keyboard"
+            "id": "magic_keyboard_fail",
+            "action": "Try Magic Keyboard trackpad",
+            "description": "Trackpad selection randomly doesn't work. Touch the screen — works fine. Why?",
+            "seconds": 8,
+            "participation": 0.15,
+            "frequencyDays": 1,
+            "symbol": "T_magic"
+          },
+          {
+            "id": "three_finger_gestures",
+            "action": "Learn three-finger gestures",
+            "description": "Copy, paste, undo with gestures — which also randomly don't register",
+            "seconds": 4,
+            "participation": 0.30,
+            "frequencyDays": 1,
+            "symbol": "T_gesture"
           }
         ]
       },
 
       "shameFactors": {
-        "pressureFactor": 1.7,
+        "pressureFactor": 1.8,
         "pressureLabel": "Text editing is constant and urgent",
         "pressureExplanation": "1.0 = casual note, 2.0 = fixing a typo before sending"
       },
 
       "engineeringEstimate": {
-        "hoursToFix": 200,
-        "teamSize": 2,
+        "hoursToFix": 400,
+        "teamSize": 3,
         "sprints": 2,
-        "explanation": "Larger touch targets, consistent tap behavior, visible cursor positioning. Two engineers, two sprints."
+        "explanation": "Consistent hit targets, predictable selection behavior, trackpad parity with touch. Three engineers, two sprints. But honestly, how is this not done already?"
       }
     }
   ]
