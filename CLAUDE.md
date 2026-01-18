@@ -4,7 +4,7 @@ This file provides context for Claude Code when working on this project.
 
 ## Project overview
 
-Apple Joke Bugs is a satirical static website that calculates how much time humanity has wasted due to long-standing Apple software bugs. It uses a formula-based approach with editable values so users can adjust assumptions.
+Bugs Apple Loves is a satirical static website that calculates how much time humanity has wasted due to long-standing Apple software bugs. It uses a formula-based approach with editable values so users can adjust assumptions.
 
 ## Tech stack
 

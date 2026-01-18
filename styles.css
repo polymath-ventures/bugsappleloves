@@ -679,6 +679,19 @@ body {
     margin: 0 auto;
 }
 
+.footer-disclaimer-prominent {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    display: inline-block;
+}
+
 .footer-text {
     font-size: 21px;
     color: var(--text-secondary);

@@ -1,8 +1,10 @@
-# Apple Joke Bugs
+# Bugs Apple Loves
+
+Why else would they keep them around for so long?
 
 A satirical website documenting Apple software bugs that have remained unfixed for years. We did the math on how much time humanity has wasted.
 
-**Live site:** [applejokebugs.com](https://polymath-ventures.github.io/applejokebugs/) (or your GitHub Pages URL)
+**Live site:** [bugsappleloves.com](https://polymath-ventures.github.io/applejokebugs/) (or your GitHub Pages URL)
 
 ## What is this?
 
