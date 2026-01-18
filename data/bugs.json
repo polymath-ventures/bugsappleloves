@@ -1241,6 +1241,127 @@
         "sprints": 1,
         "explanation": "Push updates to widgets when data changes. Two engineers, one sprint."
       }
+    },
+
+    {
+      "id": "ios-text-selection",
+      "title": "iOS Text Selection is Chaos",
+      "subtitle": "You just wanted to move the cursor. Now everything is selected.",
+      "description": "You want to position the cursor at the end of a line. You tap. It selects the last word. You try to grab the handle — it doesn't respond and deselects. You tap again, now it selects the whole sentence. You tap blank space to deselect — nothing. You tap five more times. On the fifth, it selects all. You switch apps hoping the selection disappears. You tap and hold — sometimes text selects, sometimes a menu appears, sometimes nothing. Eventually you select all, delete everything, and retype from scratch.",
+      "platforms": ["iOS", "iPadOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2015",
+      "tags": ["iOS", "Text Selection", "Cursor", "UX", "Maddening"],
+
+      "scope": {
+        "featureUsageRate": 0.95,
+        "featureUsageLabel": "of users edit text on iOS",
+        "bugEncounterRate": 0.75,
+        "bugEncounterLabel": "of text editing sessions involve selection frustration",
+        "frequencyPerDay": 5.0,
+        "frequencyLabel": "text selection battles per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The text selection lottery",
+        "steps": [
+          {
+            "id": "want_cursor",
+            "action": "Want to position cursor",
+            "description": "Just need to add a word at the end",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_want"
+          },
+          {
+            "id": "tap_select_word",
+            "action": "Tap, accidentally select word",
+            "description": "You tapped precisely where you wanted. It selected a word.",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_word"
+          },
+          {
+            "id": "grab_handle",
+            "action": "Try to grab selection handle",
+            "description": "Your finger is on it. It doesn't respond.",
+            "seconds": 3,
+            "retries": 2,
+            "symbol": "T_handle"
+          },
+          {
+            "id": "deselect_fail",
+            "action": "Tap to deselect",
+            "description": "Tap blank space. Nothing happens. Or it selects more.",
+            "seconds": 2,
+            "retries": 4,
+            "symbol": "T_deselect"
+          },
+          {
+            "id": "select_all",
+            "action": "Accidentally Select All",
+            "description": "You've now selected everything. You don't know how.",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_all"
+          },
+          {
+            "id": "give_up",
+            "action": "Delete and retype",
+            "description": "It's faster to start over than fight the selection",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_retype"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Desperate attempts to control text",
+        "sinks": [
+          {
+            "id": "magnifying_glass",
+            "action": "Long-press for magnifying glass",
+            "description": "Sometimes works. Sometimes shows a menu. Sometimes nothing.",
+            "seconds": 5,
+            "participation": 0.60,
+            "frequencyDays": 1,
+            "symbol": "T_magnify"
+          },
+          {
+            "id": "trackpad_mode",
+            "action": "Use keyboard trackpad mode",
+            "description": "Hold spacebar to move cursor — if you know it exists",
+            "seconds": 3,
+            "participation": 0.20,
+            "frequencyDays": 1,
+            "symbol": "T_trackpad"
+          },
+          {
+            "id": "external_keyboard",
+            "action": "Connect external keyboard",
+            "description": "Give up on touch entirely",
+            "seconds": 60,
+            "participation": 0.10,
+            "frequencyDays": 30,
+            "symbol": "T_keyboard"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.7,
+        "pressureLabel": "Text editing is constant and urgent",
+        "pressureExplanation": "1.0 = casual note, 2.0 = fixing a typo before sending"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 200,
+        "teamSize": 2,
+        "sprints": 2,
+        "explanation": "Larger touch targets, consistent tap behavior, visible cursor positioning. Two engineers, two sprints."
+      }
     }
   ]
 }
