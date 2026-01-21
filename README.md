@@ -82,10 +82,6 @@ If you're comfortable with JSON, you can add a bug yourself:
 5. Test locally by opening `index.html`
 6. Submit a PR
 
-### Help verify dates
-
-Our bug dates are estimates. If you find an earlier report of a bug we list, [submit an "Earlier Bug Sighting"](https://github.com/polymath-ventures/bugsappleloves/issues/new/choose) issue with a link to the forum post or article.
-
 ## Disclaimer
 
 This is a joke. Kind of. These bugs are real though. Not affiliated with Apple Inc. All estimates use public data and reasonable assumptions. Your actual frustration may vary.
