@@ -79,8 +79,9 @@ body {
     font-size: clamp(56px, 12vw, 96px);
     font-weight: 700;
     letter-spacing: -0.03em;
-    line-height: 1.05;
+    line-height: 1.15;
     margin-bottom: var(--space-lg);
+    padding-bottom: 0.1em;
     background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
