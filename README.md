@@ -10,7 +10,7 @@ A satirical website documenting Apple software bugs that have remained unfixed f
 
 Every bug on this site includes:
 - A description of the bug and affected platforms
-- A mathematical formula calculating total time wasted by humanity
+- A mathematical formula calculating total time wasted by humanity because Apple just won't fix these
 - Editable values so you can adjust the assumptions if you disagree
 - A "shame multiplier" based on how long Apple has known about it
 - An engineering estimate showing how quickly Apple could fix it
