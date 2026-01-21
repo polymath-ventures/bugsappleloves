@@ -15,20 +15,6 @@ Every bug on this site includes:
 - A "shame multiplier" based on how long Apple has known about it
 - An engineering estimate showing how quickly Apple could fix it
 
-## Running locally
-
-No build step required. Just open `index.html` in a browser, or serve it:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js
-npx serve
-```
-
-Then visit `http://localhost:8000`
-
 ## Project structure
 
 ```
@@ -60,6 +46,8 @@ Shame Multiplier = Years Unfixed × Pressure Factor
 
 The verdict shows how many hours humanity wastes every second, compared to the engineering hours Apple would need to fix it.
 
+If you disagree, cool. Keep doing that.
+
 ## Contributing
 
 ### Suggest a bug
@@ -72,8 +60,6 @@ Know an Apple bug that's been unfixed for years? [Open an issue](https://github.
 - Include links to forum posts or articles as evidence
 
 ### Submit a bug directly (PR)
-
-If you're comfortable with JSON, you can add a bug yourself:
 
 1. Fork the repo
 2. Add an entry to `data/bugs.json` following the existing schema
