@@ -1,5 +1,5 @@
 /**
- * Apple Joke Bugs - Formula Engine & Renderer
+ * Bugs Apple Loves - Formula Engine & Renderer
  * With editable values for user customization
  */
 
@@ -337,7 +337,7 @@ function renderBugCard(bug, impact, index) {
     card.innerHTML = `
         <!-- Header -->
         <header class="bug-header">
-            <p class="bug-number">Apple Joke Bug #${String(index + 1).padStart(3, '0')}${isModified ? '<span class="modified-indicator" title="Values modified"></span>' : ''}</p>
+            <p class="bug-number">Bug Apple Loves #${String(index + 1).padStart(3, '0')}${isModified ? '<span class="modified-indicator" title="Values modified"></span>' : ''}</p>
             <h2 class="bug-title">${bug.title}</h2>
             <p class="bug-subtitle">${bug.subtitle}</p>
             <p class="bug-description">${bug.description}</p>
