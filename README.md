@@ -15,18 +15,6 @@ Every bug on this site includes:
 - A "shame multiplier" based on how long Apple has known about it
 - An engineering estimate showing how quickly Apple could fix it
 
-## Project structure
-
-```
-├── index.html          # Main page
-├── app.js              # Formula engine and rendering
-├── styles.css          # Inverted Apple-style design
-├── data/
-│   ├── bugs.json       # Bug definitions with formulas
-│   └── constants.json  # Platform user counts, Apple facts
-└── screenshots/        # Bug screenshots (add your own)
-```
-
 ## The formula
 
 Each bug's impact is calculated as:
@@ -60,6 +48,18 @@ Know an Apple bug that's been unfixed for years? [Open an issue](https://github.
 4. Add a screenshot to `screenshots/` (optional but nice)
 5. Test locally by opening `index.html`
 6. Submit a PR
+
+## Project structure
+
+```
+├── index.html          # Main page
+├── app.js              # Formula engine and rendering
+├── styles.css          # Inverted Apple-style design
+├── data/
+│   ├── bugs.json       # Bug definitions with formulas
+│   └── constants.json  # Platform user counts, Apple facts
+└── screenshots/        # Bug screenshots (add your own)
+```
 
 ## Disclaimer
 
