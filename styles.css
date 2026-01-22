@@ -668,6 +668,32 @@ body {
     text-decoration: underline;
 }
 
+.bug-permalink {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.bug-permalink:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* Back to all bugs link */
+.back-to-all {
+    display: inline-block;
+    margin-bottom: var(--space-xl);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.back-to-all:hover {
+    text-decoration: underline;
+}
+
 /* ========== Footer ========== */
 .footer {
     padding: var(--space-2xl) var(--container-padding);

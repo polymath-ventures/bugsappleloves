@@ -9,6 +9,32 @@ let constants = null;
 let originalBugs = null;
 let currentBugs = null;
 
+// ========== Routing ==========
+
+function getCurrentBugId() {
+    const hash = window.location.hash.slice(1); // Remove '#'
+    return hash || null;
+}
+
+function getBugIndexById(id) {
+    if (!currentBugs || !id) return -1;
+    return currentBugs.findIndex(bug => bug.id === id);
+}
+
+function navigateToBug(bugId) {
+    window.location.hash = bugId;
+}
+
+function navigateToAll() {
+    history.pushState('', document.title, window.location.pathname);
+    handleRouteChange();
+}
+
+function handleRouteChange() {
+    if (!currentBugs) return; // Data not loaded yet
+    renderAll();
+}
+
 // ========== Data Loading ==========
 
 async function loadData() {
@@ -481,6 +507,7 @@ function renderBugCard(bug, impact, index) {
             </div>
             <p class="bug-date">${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed by Apple</strong></p>
             ${bug.sourceUrl ? `<p class="bug-source">Source: <a href="${bug.sourceUrl}" target="_blank">${bug.sourceLabel || bug.sourceUrl}</a></p>` : ''}
+            <a href="#${bug.id}" class="bug-permalink" title="Link to this bug">🔗 Permalink</a>
         </footer>
     `;
 
@@ -500,6 +527,29 @@ function renderAll() {
     const container = document.getElementById('bugs-container');
     container.innerHTML = '';
 
+    const currentBugId = getCurrentBugId();
+    const singleBugIndex = getBugIndexById(currentBugId);
+
+    // Single bug view
+    if (singleBugIndex !== -1) {
+        const backLink = document.createElement('a');
+        backLink.href = '#';
+        backLink.className = 'back-to-all';
+        backLink.textContent = '← Back to all bugs';
+        backLink.onclick = (e) => {
+            e.preventDefault();
+            navigateToAll();
+        };
+        container.appendChild(backLink);
+
+        const card = renderBugCard(currentBugs[singleBugIndex], impacts[singleBugIndex], singleBugIndex);
+        container.appendChild(card);
+
+        updateTotalImpact([impacts[singleBugIndex]]);
+        return;
+    }
+
+    // All bugs view
     currentBugs.forEach((bug, index) => {
         const card = renderBugCard(bug, impacts[index], index);
         container.appendChild(card);
@@ -517,6 +567,9 @@ async function main() {
 
         // Add global click handler for editable values
         document.addEventListener('click', handleEditableClick);
+
+        // Handle hash changes for routing
+        window.addEventListener('hashchange', handleRouteChange);
 
     } catch (error) {
         console.error('Failed to load data:', error);
