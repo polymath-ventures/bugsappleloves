@@ -1618,7 +1618,7 @@
         "hoursToFix": 16,
         "teamSize": 1,
         "sprints": 1,
-        "explanation": "Snapshot the available devices when the share sheet opens. New devices can appear greyed out at the bottom, but don't shuffle existing positions. One engineer, a few days."
+        "explanation": "Make AirDrop a two-step flow like Messages or WhatsApp: tap AirDrop icon first, then pick recipient on a dedicated screen. No more shuffling targets in the share sheet. One engineer, a few days."
       }
     },
 
