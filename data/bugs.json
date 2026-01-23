@@ -1618,7 +1618,7 @@
         "hoursToFix": 16,
         "teamSize": 1,
         "sprints": 1,
-        "explanation": "Lock the list position once a finger approaches the screen. One engineer, a few days."
+        "explanation": "Snapshot the available devices when the share sheet opens. New devices can appear greyed out at the bottom, but don't shuffle existing positions. One engineer, a few days."
       }
     },
 
