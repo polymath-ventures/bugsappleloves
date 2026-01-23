@@ -1379,6 +1379,135 @@
         "sprints": 2,
         "explanation": "Consistent hit targets, predictable selection behavior, trackpad parity with touch. Three engineers, two sprints. But honestly, how is this not done already?"
       }
+    },
+
+    {
+      "id": "maps-unlock-fight",
+      "title": "Apple Maps Fights You When You Unlock",
+      "subtitle": "How dare you want to use your phone while navigating.",
+      "description": "You're using Apple Maps for directions. Your phone is locked. You need to check something else real quick. You swipe up. Nothing. You swipe harder. The UI resists, sluggish and weird. You have to swipe further than normal. Face ID doesn't activate because apparently looking at your phone during navigation doesn't count. The phone fights you for a solid 5 seconds before grudgingly unlocking. This happens during phone calls too. Any app that works on the lock screen makes unlocking feel like negotiating with a stubborn toddler.",
+      "platforms": ["iOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2015",
+      "tags": ["Apple Maps", "Face ID", "Lock Screen", "Navigation", "Infuriating"],
+
+      "scope": {
+        "featureUsageRate": 0.40,
+        "featureUsageLabel": "of users use Apple Maps for navigation",
+        "bugEncounterRate": 0.85,
+        "bugEncounterLabel": "of navigation sessions involve an unlock attempt",
+        "frequencyPerDay": 2.0,
+        "frequencyLabel": "unlock struggles per navigation session"
+      },
+
+      "behavioralFlow": {
+        "description": "The unlock negotiation",
+        "steps": [
+          {
+            "id": "navigating",
+            "action": "Navigating somewhere",
+            "description": "Apple Maps is doing its job, phone is locked",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_nav"
+          },
+          {
+            "id": "need_phone",
+            "action": "Need to use your phone",
+            "description": "Check a message, change music, anything",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_need"
+          },
+          {
+            "id": "swipe_up",
+            "action": "Swipe up to unlock",
+            "description": "The normal gesture you do 100 times a day",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_swipe"
+          },
+          {
+            "id": "nothing_happens",
+            "action": "Nothing happens",
+            "description": "The UI barely acknowledges your existence",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_ignore"
+          },
+          {
+            "id": "swipe_harder",
+            "action": "Swipe harder, further",
+            "description": "Maybe you didn't swipe hard enough?",
+            "seconds": 2,
+            "retries": 2,
+            "symbol": "T_harder"
+          },
+          {
+            "id": "face_id_wait",
+            "action": "Face ID finally wakes up",
+            "description": "It waited until you stopped swiping to even try",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_face"
+          },
+          {
+            "id": "finally_unlocked",
+            "action": "Finally unlocked",
+            "description": "5 seconds that felt like 30",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_done"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Workarounds for people who navigate often",
+        "sinks": [
+          {
+            "id": "keep_unlocked",
+            "action": "Just keep the phone unlocked",
+            "description": "Disable auto-lock during navigation, drain your battery",
+            "seconds": 30,
+            "participation": 0.25,
+            "frequencyDays": 7,
+            "symbol": "T_unlocked"
+          },
+          {
+            "id": "use_google_maps",
+            "action": "Switch to Google Maps",
+            "description": "Abandon Apple Maps entirely because of this one thing",
+            "seconds": 600,
+            "participation": 0.30,
+            "frequencyDays": 365,
+            "symbol": "T_google"
+          },
+          {
+            "id": "passcode_fallback",
+            "action": "Give up on Face ID, use passcode",
+            "description": "Manually tap in your code like it's 2014",
+            "seconds": 4,
+            "participation": 0.40,
+            "frequencyDays": 1,
+            "symbol": "T_passcode"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.9,
+        "pressureLabel": "You're navigating, probably driving or walking somewhere unfamiliar",
+        "pressureExplanation": "1.0 = parked, 2.0 = at an intersection needing to check something NOW"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 80,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Don't delay Face ID activation during lock screen apps. Make swipe gestures responsive. Two engineers, one sprint."
+      }
     }
   ]
 }
