@@ -1010,9 +1010,9 @@
 
     {
       "id": "window-resize-tahoe",
-      "title": "Window Resizing Doesn't Work",
+      "title": "macOS 26 Window Resizing Doesn't Work",
       "subtitle": "The corner is there. You just can't click it.",
-      "description": "You try to resize a window by grabbing the corner. You miss. You try again. Miss. You hover precisely where the corner should be. Nothing. Turns out the resize target is a tiny 19×19 pixel zone, but thanks to Tahoe's huge corner radius, 75% of it is outside the visible window. You have to click in empty space next to the window to resize it. Intuitive.",
+      "description": "You try to resize a window by grabbing the corner. You miss. You try again. Miss. You hover precisely where the corner should be. Nothing. Turns out the resize target is a tiny 19×19 pixel zone, but thanks to Tahoe's huge corner radius, 75% of it is outside the visible window. You have to click in empty space next to the window to resize it. Intuitive. (All credit goes to to <a href='https://noheger.at/blog/2026/01/11/the-struggle-of-resizing-windows-on-macos-tahoe/'>Norbert Heger at noheger.at</a> for doing all of the extensive legwork on this one!",
       "platforms": ["macOS"],
       "screenshot": "screenshots/clickable-area-1.webp",
       "videoUrl": null,
