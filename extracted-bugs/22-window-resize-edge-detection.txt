@@ -1,0 +1,33 @@
+# Window Resize Edge Detection Flaky
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- macOS
+
+## Duration
+- Decades (persistent issue)
+
+## Description
+The cursor fails to activate resize mode when positioned at window corners or edges:
+- Have to pixel-hunt to find the resize zone
+- Resize cursor doesn't appear reliably
+- Corners are particularly hard to grab
+- Inconsistent hit zone size
+
+## User Reports
+- "I spend more time trying to grab the window edge than actually resizing"
+
+## Workarounds
+- Use window management apps (Rectangle, Magnet)
+- Double-click title bar to maximize
+- Use keyboard shortcuts where available
+
+## Technical Notes
+- Edge detection zone is very small
+- Some apps have even smaller zones
+- Issue has persisted across many macOS versions
+
+## Source
+https://news.ycombinator.com/item?id=46727587

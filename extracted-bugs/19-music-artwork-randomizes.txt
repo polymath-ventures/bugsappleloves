@@ -1,0 +1,35 @@
+# Music Artwork Randomizes Across Syncs
+
+## Mentions: 2 commenters
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- iOS Music app
+
+## Duration
+- Years
+
+## Description
+Album artwork gets mixed up and randomized when syncing music:
+- Wrong album art displays for songs
+- Artwork changes randomly between syncs
+- Embedded artwork replaced with wrong images
+- Compilation albums particularly affected
+
+## User Reports
+- "My carefully curated album art is now completely wrong"
+- "Every sync scrambles my artwork more"
+- "A Beatles album is showing Metallica artwork"
+
+## Workarounds
+- Re-embed artwork manually (time-consuming)
+- Use a different music player
+- Accept the chaos
+
+## Technical Notes
+- Related to iTunes/Music library database
+- iCloud Music Library makes it worse
+- May be related to Apple Music matching
+
+## Source
+https://news.ycombinator.com/item?id=46727587

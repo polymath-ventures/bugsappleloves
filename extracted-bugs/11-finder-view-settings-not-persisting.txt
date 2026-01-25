@@ -1,0 +1,33 @@
+# Finder Sidebar View Settings Not Persisting
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- macOS Finder
+
+## Duration
+- Ongoing
+
+## Description
+When clicking folders in the Finder sidebar, the folder displays with the wrong view settings:
+- Folder shows last-visited view instead of saved settings
+- Icon view vs list view not remembered per-folder
+- Column widths reset randomly
+- Sort order doesn't persist
+
+## User Reports
+- "I set Downloads to list view but it keeps switching to icons"
+- "Every time I open this folder, I have to resize the columns again"
+- "Finder forgets my view preferences constantly"
+
+## Workarounds
+- Use "Use as Defaults" option (inconsistent results)
+- Delete .DS_Store files (temporary fix)
+- Accept the inconsistency
+
+## Related Issues
+- See also: Finder Window Amnesia bug (window positions not remembered)
+
+## Source
+https://news.ycombinator.com/item?id=46727587

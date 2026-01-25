@@ -1,0 +1,27 @@
+# Finder Window Appears on Top When Switching Desktops
+
+## Mentions: 1 commenter
+## Severity: LOW
+
+## Affected Products
+- macOS Finder with multiple desktops
+
+## Duration
+- Multiple OS releases
+
+## Description
+When a Finder window is set to appear on "All Desktops", it briefly renders on top of other windows when switching between desktops:
+- Finder flashes over other apps momentarily
+- Disrupts visual flow of desktop switching
+- Inconsistent with how other "all desktops" apps behave
+
+## User Reports
+- "The Finder window flickers on top every time I switch spaces"
+
+## Workarounds
+- Don't use "All Desktops" for Finder
+- Keep Finder minimized
+- Use a different file manager
+
+## Source
+https://news.ycombinator.com/item?id=46727587

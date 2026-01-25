@@ -1,0 +1,28 @@
+# Smart Widget Causes Unintended Notification Opens
+
+## Mentions: 1 commenter
+## Severity: LOW
+
+## Affected Products
+- iOS
+
+## Duration
+- Recent issue
+
+## Description
+Interacting with Smart Stack widgets accidentally opens notifications:
+- Swiping on widget triggers notification
+- Tapping near widget opens wrong thing
+- Touch targets overlap or are unclear
+- Happens frequently during normal use
+
+## User Reports
+- "I try to check my widget and it opens some random notification"
+
+## Workarounds
+- Be more precise with taps
+- Rearrange widgets
+- Disable Smart Stack
+
+## Source
+https://news.ycombinator.com/item?id=46727587

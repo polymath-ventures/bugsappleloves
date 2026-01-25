@@ -1,0 +1,32 @@
+# iOS Text Selection and Cursor Movement Dysfunction
+
+## Mentions: 10+ commenters
+## Severity: HIGH (most mentioned bug)
+
+## Affected Products
+- iOS (all versions)
+
+## Duration
+- 17 years (since original iPhone)
+
+## Description
+Moving the text cursor on iOS is extremely difficult and erratic. Users experience:
+- Difficulty moving cursor without accidentally selecting text
+- Erratic selection behavior when trying to position cursor
+- Magnifying glass feature removed/degraded over iOS versions
+- 3D Touch cursor mode removed on newer devices
+- Trackpad mode (holding spacebar) inconsistent and hard to discover
+
+## User Reports
+- "iOS text selection has been bad for 17 years"
+- "Trying to select text feels like fighting the OS"
+- "The cursor jumps around unpredictably"
+- "Apple removed the best text selection features over time"
+
+## Workarounds
+- Hold spacebar to activate trackpad mode (not discoverable)
+- Use external keyboard
+- Copy entire text and edit elsewhere
+
+## Source
+https://news.ycombinator.com/item?id=46727587

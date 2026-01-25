@@ -1,0 +1,35 @@
+# macOS Login Screen User Selection Lag
+
+## Mentions: 3 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- macOS
+
+## Duration
+- Years (multiple OS versions)
+
+## Description
+The macOS login screen has significant delays when switching between user accounts:
+- Clicking on a different user takes several seconds to respond
+- Password field appears slowly
+- Animation is choppy or frozen
+- System appears unresponsive during switch
+
+## User Reports
+- "Switching users on the login screen takes 5-10 seconds"
+- "The login screen feels like it's running on a 10-year-old computer"
+- "I have a brand new MacBook Pro and the login screen still lags"
+
+## Workarounds
+- Wait patiently (no real workaround)
+- Use Fast User Switching from menu bar instead
+- Reduce number of user accounts
+
+## Technical Notes
+- Likely related to loading user-specific assets
+- Problem persists on high-end hardware
+- May be related to FileVault encryption
+
+## Source
+https://news.ycombinator.com/item?id=46727587

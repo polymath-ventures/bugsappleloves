@@ -1,0 +1,36 @@
+# Spotlight Search Index Corruption
+
+## Mentions: 3+ commenters
+## Severity: MEDIUM
+
+## Affected Products
+- macOS Spotlight
+
+## Duration
+- Ongoing (multiple OS versions)
+
+## Description
+Spotlight search fails to locate installed applications and files:
+- Apps installed on the system don't appear in search
+- Files that exist cannot be found
+- Index becomes corrupted after updates
+- Rebuilding index is slow and doesn't always fix the issue
+
+## User Reports
+- "I can see the app in Applications folder but Spotlight can't find it"
+- "Had to rebuild my Spotlight index 3 times this year"
+- "Search finds old files but not recently created ones"
+
+## Workarounds
+- Rebuild Spotlight index via Privacy settings
+- Use `mdutil -E /` command to force reindex
+- Use third-party launchers (Alfred, Raycast)
+- Navigate manually instead of searching
+
+## Technical Notes
+- Index stored in /.Spotlight-V100/
+- Can be triggered by permission issues
+- External drives particularly problematic
+
+## Source
+https://news.ycombinator.com/item?id=46727587

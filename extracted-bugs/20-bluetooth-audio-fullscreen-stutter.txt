@@ -1,0 +1,24 @@
+# Bluetooth Audio Stutters During Fullscreen Switch
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- macOS
+
+## Duration
+- Ongoing
+
+## Description
+Audio playing through Bluetooth headphones/speakers stutters or cuts out when switching applications to/from fullscreen mode.
+
+## User Reports
+- "Every time I go fullscreen, my AirPods audio cuts out for a second"
+
+## Workarounds
+- Avoid fullscreen mode
+- Use wired headphones
+- Use built-in speakers
+
+## Source
+https://news.ycombinator.com/item?id=46727587

@@ -1,0 +1,29 @@
+# Audio Balance Randomly Changes
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- macOS
+
+## Duration
+- 6+ years documented
+
+## Description
+The left/right audio balance shifts without user action:
+- Audio suddenly favors one side
+- Balance setting changed in System Preferences
+- Happens randomly, no trigger identified
+- Particularly annoying with headphones
+
+## User Reports
+- "I've filed bug reports for 6 years about this"
+- "Audio randomly becomes left-heavy"
+
+## Workarounds
+- Check and reset balance regularly
+- Use audio control software
+- Accept periodic mono audio experience
+
+## Source
+https://news.ycombinator.com/item?id=46727587

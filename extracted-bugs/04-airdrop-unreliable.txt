@@ -1,0 +1,41 @@
+# AirDrop Unreliability
+
+## Mentions: 6+ commenters
+## Severity: HIGH
+
+## Affected Products
+- iOS
+- macOS
+- iPadOS
+
+## Duration
+- Years (since AirDrop introduction)
+
+## Description
+AirDrop, Apple's flagship device-to-device transfer feature, fails frequently:
+- Devices don't see each other despite being nearby
+- Transfers fail mid-way without clear error
+- "Waiting" status hangs indefinitely
+- Works sometimes, fails other times with no pattern
+- Requires toggling WiFi/Bluetooth/AirDrop settings repeatedly
+
+## User Reports
+- "AirDrop is a coin flip whether it works"
+- "I ended up just emailing the file to myself"
+- "Two brand new Apple devices can't see each other"
+- "It worked yesterday but not today with same devices"
+
+## Workarounds
+- Toggle AirDrop off and on
+- Toggle WiFi and Bluetooth off/on
+- Sign out and back into iCloud
+- Use alternative transfer methods (email, iCloud Drive, messaging)
+- Restart both devices
+
+## Technical Notes
+- Requires both WiFi and Bluetooth enabled
+- "Contacts Only" mode particularly problematic
+- Firewall settings can interfere on macOS
+
+## Source
+https://news.ycombinator.com/item?id=46727587

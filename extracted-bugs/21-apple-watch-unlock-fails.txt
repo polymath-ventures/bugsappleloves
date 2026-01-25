@@ -1,0 +1,30 @@
+# Apple Watch Mac Unlock Stops Working Randomly
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- macOS
+- Apple Watch
+
+## Duration
+- Ongoing
+
+## Description
+The "Unlock with Apple Watch" feature randomly stops working despite being enabled:
+- Watch is connected and nearby
+- Feature is enabled in settings
+- Mac just doesn't recognize the watch
+- Have to type password instead
+
+## User Reports
+- "Apple Watch unlock works for a week, then stops for no reason"
+
+## Workarounds
+- Toggle the feature off and on
+- Restart both devices
+- Sign out and back into iCloud
+- Use password/Touch ID instead
+
+## Source
+https://news.ycombinator.com/item?id=46727587

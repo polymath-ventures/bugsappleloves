@@ -1,0 +1,30 @@
+# Finder Search Returns Unrelated Results
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- macOS Finder
+
+## Duration
+- Ongoing
+
+## Description
+Finder file search returns files that have no connection to the search terms:
+- Results include files without the search term in name or contents
+- Seems to include files from unrelated locations
+- No clear logic to what gets included
+
+## User Reports
+- "I search for 'invoice' and get random photos returned"
+
+## Workarounds
+- Use terminal commands (find, grep)
+- Use third-party search tools
+- Add more specific search criteria
+
+## Related Issues
+- See also: Spotlight Index Corruption
+
+## Source
+https://news.ycombinator.com/item?id=46727587

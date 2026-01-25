@@ -1,0 +1,37 @@
+# Screen Time Parental Controls Easily Bypassed
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- iOS Screen Time
+
+## Duration
+- 5+ years
+
+## Description
+Screen Time parental controls fail to enforce restrictions:
+- Children find easy workarounds
+- Settings don't apply correctly
+- Limits reset or don't trigger
+- App restrictions easily circumvented
+
+## User Reports
+- "My kid figured out how to bypass Screen Time in 5 minutes"
+- "The app limits just don't work half the time"
+- "I set a 1 hour limit but the app runs for 3 hours"
+- "Screen Time has been broken for 5+ years"
+
+## Workarounds
+- Use third-party parental control apps
+- Physical device monitoring
+- Accept that Screen Time is unreliable
+
+## Known Bypass Methods
+- Reinstalling apps
+- Changing system date/time
+- Using web versions of apps
+- iMessage app extensions
+
+## Source
+https://news.ycombinator.com/item?id=46727587

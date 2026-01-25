@@ -1,0 +1,35 @@
+# Maps Causes Device Unlock Slowness
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- iOS
+
+## Duration
+- Ongoing
+
+## Description
+When Apple Maps is running navigation in the background, unlocking the device becomes sluggish:
+- Face ID takes longer to recognize
+- Lock screen is slow to respond
+- Swipe gestures delayed
+- Overall system feels frozen
+
+## User Reports
+- "My phone becomes almost unusable while navigating"
+- "Face ID works fine until I start Maps"
+- "Unlocking takes 3-4 seconds instead of instant"
+
+## Workarounds
+- Close Maps when not actively navigating
+- Use voice commands instead of unlocking
+- Use a different navigation app
+
+## Technical Notes
+- Likely related to Maps consuming CPU/GPU resources
+- May be worse on older devices
+- Possibly related to location services priority
+
+## Source
+https://news.ycombinator.com/item?id=46727587

@@ -1,0 +1,33 @@
+# Contacts Daemon Excessive Disk Activity
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- macOS Contacts
+
+## Duration
+- Ongoing
+
+## Description
+The contactsd daemon consumes massive amounts of disk I/O:
+- Hundreds of gigabytes of disk reads
+- Causes system slowdown
+- Drains laptop battery
+- No apparent reason for the activity
+
+## User Reports
+- "Activity Monitor shows contactsd reading 500GB from disk"
+
+## Workarounds
+- Kill the process (temporary, it restarts)
+- Rebuild contacts database
+- Disable contact sync
+
+## Technical Notes
+- Daemon: /System/Library/PrivateFrameworks/ContactsFoundation.framework/contactsd
+- May be triggered by sync issues
+- Possibly related to corrupt contacts
+
+## Source
+https://news.ycombinator.com/item?id=46727587

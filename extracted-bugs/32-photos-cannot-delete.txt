@@ -1,0 +1,28 @@
+# Photos Locked From Deletion
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- iOS Photos
+
+## Duration
+- Ongoing
+
+## Description
+Some photos cannot be deleted from iPhone despite not being in cloud or on other devices:
+- Delete option grayed out or missing
+- Photo appears locked for no reason
+- Not part of shared albums or cloud sync
+- Takes up storage that can't be freed
+
+## User Reports
+- "I have photos I can't delete and they're not in iCloud"
+
+## Workarounds
+- Connect to computer and delete via Finder/iTunes
+- Use a third-party photo manager
+- Reset and restore (nuclear option)
+
+## Source
+https://news.ycombinator.com/item?id=46727587

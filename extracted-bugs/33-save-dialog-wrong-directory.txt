@@ -1,0 +1,33 @@
+# Save Dialog Shows Wrong Directory
+
+## Mentions: 1 commenter
+## Severity: LOW
+
+## Affected Products
+- macOS applications
+
+## Duration
+- Ongoing
+
+## Description
+The file export/save dialog shows a different directory than the previous save location:
+- Inconsistent starting directory
+- Doesn't remember last used folder
+- Different behavior in different apps
+- Have to navigate to desired folder every time
+
+## User Reports
+- "I saved to Downloads but the next save dialog opens in Documents"
+
+## Workarounds
+- Use drag-and-drop instead of Save As
+- Create folder shortcuts in sidebar
+- Accept the navigation tax
+
+## Technical Notes
+- Behavior varies by app
+- System sandboxing may affect this
+- Some apps remember location, others don't
+
+## Source
+https://news.ycombinator.com/item?id=46727587

@@ -1,0 +1,33 @@
+# Safari Tabs Randomly Disappear
+
+## Mentions: 1 commenter
+## Severity: MEDIUM
+
+## Affected Products
+- iOS Safari
+
+## Duration
+- Ongoing
+
+## Description
+Open Safari tabs get randomly deleted:
+- Tabs disappear without user action
+- Tab groups vanish unexpectedly
+- Happens after updates or restarts
+- No way to recover lost tabs
+
+## User Reports
+- "I had 50 tabs open and Safari just deleted them all"
+- "My tab groups keep disappearing"
+
+## Workarounds
+- Use Reading List as backup
+- Bookmark important tabs immediately
+- Use a different browser
+- Accept tab impermanence
+
+## Impact
+Loss of research, reading lists, and work in progress.
+
+## Source
+https://news.ycombinator.com/item?id=46727587

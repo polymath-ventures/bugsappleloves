@@ -1,0 +1,34 @@
+# Apple Pay Card Icon Changes Shipping Address Instead of Card
+
+## Mentions: 4 commenters
+## Severity: MEDIUM-HIGH
+
+## Affected Products
+- iOS Apple Pay
+
+## Duration
+- Ongoing
+
+## Description
+When using Apple Pay for checkout, tapping on the credit card icon (intending to change payment method) instead changes the shipping address. This is a major UX failure:
+- Icon visually represents a credit card
+- User expectation: tapping card changes payment card
+- Actual behavior: changes shipping address
+- Results in orders shipped to wrong addresses
+
+## User Reports
+- "I accidentally shipped an order to my old address because of this"
+- "The card icon should change the card, not the address"
+- "This has cost me actual money in reshipping fees"
+- "I've done this multiple times despite knowing about the bug"
+
+## Workarounds
+- Be very careful during checkout
+- Always verify shipping address before confirming
+- Scroll down to find actual card selection option
+
+## Impact
+This can result in real financial loss when orders are shipped to incorrect addresses.
+
+## Source
+https://news.ycombinator.com/item?id=46727587

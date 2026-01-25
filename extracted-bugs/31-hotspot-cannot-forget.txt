@@ -1,0 +1,31 @@
+# Cannot Forget Personal Hotspot Network
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- iOS
+- macOS
+
+## Duration
+- Ongoing
+
+## Description
+Once connected to a Personal Hotspot, the network cannot be forgotten:
+- "Forget This Network" option doesn't work for hotspots
+- Device auto-reconnects when hotspot is enabled
+- No way to remove from known networks list
+
+## User Reports
+- "My Mac keeps connecting to my old phone's hotspot even though I don't want it to"
+
+## Workarounds
+- Rename the hotspot on the source device
+- Turn off auto-join (if option available)
+- Change hotspot password
+
+## Related Issues
+- See also: Personal Hotspot Connection Failures
+
+## Source
+https://news.ycombinator.com/item?id=46727587

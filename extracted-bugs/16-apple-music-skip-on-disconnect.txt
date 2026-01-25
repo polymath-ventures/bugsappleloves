@@ -1,0 +1,34 @@
+# Apple Music Skips Repeatedly on Network Drop
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- iOS Apple Music
+
+## Duration
+- 10+ years
+
+## Description
+When network connection drops briefly, Apple Music starts skipping through songs rapidly:
+- One network hiccup causes multiple skips
+- Songs change every few seconds
+- Downloaded songs also affected
+- Have to manually stop and restart playback
+
+## User Reports
+- "I go through a tunnel and Apple Music skips 10 songs"
+- "This has been happening for over 10 years"
+- "Even songs I downloaded offline get skipped"
+
+## Workarounds
+- Use a different music app (Spotify handles this better)
+- Download all music for offline use
+- Manually restart playback after network issues
+
+## Technical Notes
+- Seems to be a state machine bug in playback logic
+- Network retry logic triggers skip instead of retry
+
+## Source
+https://news.ycombinator.com/item?id=46727587

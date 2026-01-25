@@ -1,0 +1,204 @@
+# Hacker News Apple Bugs Extraction Summary
+
+Source: https://news.ycombinator.com/item?id=46727587
+Extraction Date: 2025-01-25
+
+## Total Bugs Extracted: 39
+
+---
+
+## BUGS BY MENTION COUNT (Severity Ranking)
+
+### HIGH SEVERITY (5+ mentions)
+These bugs are experienced by many users and represent significant pain points.
+
+| # | Bug | Mentions | Platform |
+|---|-----|----------|----------|
+| 1 | iOS Text Selection/Cursor Movement | 10+ | iOS |
+| 2 | Autocorrect Refuses User Corrections | 8+ | iOS/macOS |
+| 3 | Mail Search Broken | 8+ | iOS/macOS |
+| 4 | AirDrop Unreliable | 6+ | iOS/macOS |
+| 5 | Personal Hotspot Failures | 5+ | iOS/macOS |
+
+### MEDIUM SEVERITY (2-4 mentions)
+Widely experienced but less frequently reported.
+
+| # | Bug | Mentions | Platform |
+|---|-----|----------|----------|
+| 6 | Alarm Power Button Snoozes Instead of Stops | 4 | iOS |
+| 7 | Apple Pay Card Icon Changes Address | 4 | iOS |
+| 8 | Safari URL/Search Confusion | 3+ | iOS/macOS |
+| 9 | Spotlight Index Corruption | 3+ | macOS |
+| 10 | Login Screen User Selection Lag | 3 | macOS |
+| 11 | Finder View Settings Not Persisting | 2 | macOS |
+| 12 | Emoji Picker Malfunction | 2 | macOS |
+| 13 | Contacts Birthday Date Shift (O365) | 2 | iOS/macOS |
+| 14 | eSIM Not Recognized After Restore | 2 | iOS |
+| 15 | iOS Keyboard Wrong Characters | 2 | iOS |
+| 16 | Apple Music Skip on Network Drop | 2 | iOS |
+| 17 | Maps Causes Device Unlock Slowness | 2 | iOS |
+| 18 | Screen Time Parental Controls Bypass | 2 | iOS |
+| 19 | Music Artwork Randomizes | 2 | iOS |
+
+### LOWER SEVERITY (1 mention)
+Individual reports - may be less common or harder to reproduce.
+
+| # | Bug | Platform |
+|---|-----|----------|
+| 20 | Bluetooth Audio Fullscreen Stutter | macOS |
+| 21 | Apple Watch Mac Unlock Fails | macOS |
+| 22 | Window Resize Edge Detection Flaky | macOS |
+| 23 | Password Field No Reveal Option | macOS |
+| 24 | Finder Search Unrelated Results | macOS |
+| 25 | Notes Sync Failures | iOS/macOS |
+| 26 | Audio Balance Randomly Shifts | macOS |
+| 27 | Safari Tabs Randomly Disappear | iOS |
+| 28 | Finder All Desktops Window Overlay | macOS |
+| 29 | Contacts Daemon Excessive Disk Activity | macOS |
+| 30 | Preview Opens Behind Windows | macOS |
+| 31 | Cannot Forget Personal Hotspot | iOS/macOS |
+| 32 | Photos Cannot Be Deleted | iOS |
+| 33 | Save Dialog Shows Wrong Directory | macOS |
+| 34 | Smart Widget Notification Activation | iOS |
+| 35 | Color Picker Slow to Launch | macOS |
+| 36 | Podcasts Downloaded Episodes Missing | iOS |
+| 37 | Calendar ESC Deletes Unsaved Event | macOS |
+| 38 | Messages Forwards to Wrong Number | iOS |
+| 39 | Multi-User Graphics Corruption | macOS |
+
+---
+
+## BUGS BY PLATFORM
+
+### iOS Only: 9 bugs
+- Text Selection/Cursor
+- Alarm Power Button
+- Apple Pay Address
+- eSIM Restore
+- Keyboard Wrong Characters
+- Apple Music Skip
+- Safari Tabs Disappear
+- Photos Cannot Delete
+- Smart Widget
+
+### macOS Only: 15 bugs
+- Spotlight Index
+- Login Screen Lag
+- Finder View Settings
+- Emoji Picker
+- Bluetooth Audio Stutter
+- Apple Watch Unlock
+- Window Resize Edge
+- Password Field Reveal
+- Finder Search
+- Audio Balance
+- Finder All Desktops
+- Contacts Daemon
+- Preview Behind Windows
+- Color Picker Slow
+- Calendar ESC Delete
+- Graphics Corruption
+
+### Both iOS and macOS: 15 bugs
+- Autocorrect
+- Mail Search
+- AirDrop
+- Personal Hotspot
+- Safari URL Confusion
+- Contacts Birthday Shift
+- Maps Unlock Slow
+- Screen Time
+- Notes Sync
+- Hotspot Cannot Forget
+- Music Artwork
+- Messages Wrong Number
+- Podcasts Missing
+- Save Dialog
+
+---
+
+## BUGS BY CATEGORY
+
+### Input/Text: 4 bugs
+- iOS Text Selection (10+)
+- Autocorrect Refuses Corrections (8+)
+- iOS Keyboard Wrong Characters (2)
+- Emoji Picker (2)
+
+### Connectivity: 4 bugs
+- AirDrop Unreliable (6+)
+- Personal Hotspot Failures (5+)
+- Cannot Forget Hotspot (1)
+- eSIM Restore (2)
+
+### Search/Indexing: 4 bugs
+- Mail Search Broken (8+)
+- Spotlight Index Corruption (3+)
+- Finder Search Unrelated (1)
+- Safari URL Confusion (3+)
+
+### Sync: 4 bugs
+- Notes Sync (1)
+- Contacts Birthday Shift (2)
+- Music Artwork Randomizes (2)
+- Photos Cannot Delete (1)
+
+### Audio: 3 bugs
+- Audio Balance Shifts (1)
+- Bluetooth Fullscreen Stutter (1)
+- Apple Music Skip (2)
+
+### Windows/Display: 4 bugs
+- Login Screen Lag (3)
+- Window Resize Edge (1)
+- Finder All Desktops Overlay (1)
+- Graphics Corruption (1)
+
+### UX Design Issues: 5 bugs
+- Alarm Snooze vs Stop (4)
+- Apple Pay Address Icon (4)
+- Password Field Reveal (1)
+- Calendar ESC Delete (1)
+- Save Dialog Directory (1)
+
+---
+
+## KEY INSIGHTS
+
+1. **Input bugs are most reported** - Text selection and autocorrect alone account for 18+ mentions
+2. **Connectivity features are unreliable** - AirDrop and Hotspot are flagship features that frequently fail
+3. **Search is fundamentally broken** - Mail, Spotlight, and Finder search all have major issues
+4. **Long-standing bugs** - Many bugs have existed for 5-17 years
+5. **Both platforms affected** - Most bugs span iOS and macOS, suggesting systemic issues
+6. **UX inconsistencies** - Several "bugs" are actually confusing design decisions
+
+---
+
+## RECOMMENDED PRIORITIZATION FOR WEBSITE
+
+Based on mention count + severity + duration:
+
+1. **Tier 1 (Must Have)**
+   - iOS Text Selection (10+, 17 years)
+   - Autocorrect (8+, years)
+   - Mail Search (8+, decade+)
+   - AirDrop (6+, years)
+   - Personal Hotspot (5+, years)
+
+2. **Tier 2 (Should Have)**
+   - Safari URL/Search (3+, 13 years)
+   - Alarm Power Button (4 mentions)
+   - Apple Pay Address (4 mentions)
+   - Spotlight Index (3+)
+   - Screen Time (2, 5+ years)
+
+3. **Tier 3 (Nice to Have)**
+   - All other bugs with 2+ mentions
+
+---
+
+## FILES CREATED
+
+39 individual bug files created in /extracted-bugs/ directory
+Files numbered 01-39 by severity ranking (mention count)
+Each file follows consistent format for GitHub issue creation

@@ -1,0 +1,37 @@
+# Contacts Birthday Date Shift During Sync
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- macOS Contacts
+- iOS Contacts
+- Office 365 sync
+
+## Duration
+- Ongoing
+
+## Description
+When syncing contacts with Office 365/Exchange, birthday dates shift forward by one day:
+- Contact has birthday on Jan 15
+- After sync, birthday shows as Jan 16
+- Happens repeatedly with each sync
+- Eventually birthdays are completely wrong
+
+## User Reports
+- "Every sync adds a day to my contacts' birthdays"
+- "Had to stop syncing with Exchange because of this"
+- "My wife's birthday is now showing as a week later than it should be"
+
+## Workarounds
+- Manually correct dates (temporary)
+- Stop syncing birthdays with Exchange
+- Use a different contacts app
+
+## Technical Notes
+- Likely timezone/UTC conversion bug
+- Classic off-by-one date bug
+- Only affects Exchange/O365 sync
+
+## Source
+https://news.ycombinator.com/item?id=46727587

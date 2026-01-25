@@ -1,0 +1,33 @@
+# eSIM Not Recognized After Backup Restore
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- iOS
+
+## Duration
+- Years
+
+## Description
+When restoring an iPhone from a backup that came from a device with dual SIM configuration, the eSIM is not recognized:
+- Phone won't acknowledge eSIM exists
+- Carrier settings don't show eSIM option
+- Have to contact carrier to re-provision eSIM
+- Happens even when restoring to same device
+
+## User Reports
+- "After restoring my phone, my eSIM just disappeared"
+- "Had to spend 2 hours with carrier support to get eSIM working again"
+- "This happens every time I restore from backup"
+
+## Workarounds
+- Re-provision eSIM with carrier after restore
+- Set up as new phone instead of restoring
+- Use physical SIM instead
+
+## Impact
+Significant time waste dealing with carrier support to re-activate eSIM.
+
+## Source
+https://news.ycombinator.com/item?id=46727587

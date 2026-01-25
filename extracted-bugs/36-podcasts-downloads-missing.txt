@@ -1,0 +1,28 @@
+# Apple Podcasts Downloaded Episodes Don't Appear
+
+## Mentions: 1 commenter
+## Severity: LOW-MEDIUM
+
+## Affected Products
+- iOS Podcasts
+
+## Duration
+- Years
+
+## Description
+Episodes that have been downloaded fail to appear in the app:
+- Download completes but episode not listed
+- Only appears when storage reserve file is present
+- Have to re-download episodes
+- Storage shows space used but content missing
+
+## User Reports
+- "I downloaded episodes for my flight and they weren't there"
+
+## Workarounds
+- Re-download episodes before travel
+- Use a different podcast app (Overcast, Pocket Casts)
+- Check available storage
+
+## Source
+https://news.ycombinator.com/item?id=46727587

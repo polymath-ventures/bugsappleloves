@@ -1,0 +1,35 @@
+# Alarm Power Button Snoozes Instead of Stopping
+
+## Mentions: 4 commenters
+## Severity: MEDIUM-HIGH
+
+## Affected Products
+- iOS
+
+## Duration
+- Years (ongoing)
+
+## Description
+When an alarm goes off, pressing the power/side button snoozes the alarm instead of stopping it. This is counterintuitive because:
+- The same button stops phone calls
+- The same button stops timers
+- Users expect it to dismiss the alarm
+- Results in oversleeping when users think they stopped the alarm
+
+## User Reports
+- "I've been late to work because I thought I turned off my alarm"
+- "Why does the same button do different things for alarms vs calls?"
+- "The UI doesn't make it clear that you're snoozing, not stopping"
+- "I have to unlock my phone and find the tiny Stop button"
+
+## Workarounds
+- Swipe on the notification to stop (requires unlocking)
+- Tap "Stop" button on screen (requires looking at phone)
+- Disable snooze entirely in alarm settings
+- Use a third-party alarm app
+
+## Design Issue
+This is arguably a UX design flaw rather than a bug, but the inconsistency with other iOS behaviors makes it feel broken.
+
+## Source
+https://news.ycombinator.com/item?id=46727587

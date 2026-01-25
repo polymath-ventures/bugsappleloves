@@ -1,0 +1,28 @@
+# Messages Forwards to Wrong Phone Number
+
+## Mentions: 1 commenter
+## Severity: MEDIUM
+
+## Affected Products
+- iOS Messages
+
+## Duration
+- Ongoing
+
+## Description
+When forwarding a message to a contact, Messages uses the wrong phone number:
+- Sends to work number instead of mobile
+- Doesn't use the iMessage-enabled number
+- Message goes to landline (fails)
+- Have to manually correct every time
+
+## User Reports
+- "I forward to my wife and it goes to her work phone every time"
+
+## Workarounds
+- Manually change recipient number before sending
+- Edit contact to remove secondary numbers
+- Start new conversation instead of forwarding
+
+## Source
+https://news.ycombinator.com/item?id=46727587

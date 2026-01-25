@@ -1,0 +1,38 @@
+# Safari Treats Search Queries as URLs
+
+## Mentions: 3+ commenters
+## Severity: MEDIUM
+
+## Affected Products
+- Safari (iOS)
+- Safari (macOS)
+
+## Duration
+- 13+ years
+
+## Description
+Safari's unified address/search bar incorrectly interprets search queries as URLs:
+- Typing "something.something" tries to navigate instead of search
+- Technical terms with dots treated as domain names
+- Single words sometimes treated as URLs
+- Inconsistent behavior - same query works differently at different times
+
+## User Reports
+- "I type 'node.js tutorial' and Safari tries to go to node.js"
+- "This has been broken for at least 13 years"
+- "Chrome handles this correctly, why can't Safari?"
+- "I have to explicitly add '?' before my search to force search mode"
+
+## Workarounds
+- Prefix search with "?" to force search
+- Use the separate search field in settings
+- Add a space at the end of query
+- Switch to a different browser
+
+## Technical Notes
+- Safari uses heuristics to determine URL vs search
+- Heuristics are overly aggressive toward URL interpretation
+- Other browsers handle this more intelligently
+
+## Source
+https://news.ycombinator.com/item?id=46727587

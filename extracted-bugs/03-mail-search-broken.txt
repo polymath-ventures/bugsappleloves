@@ -1,0 +1,39 @@
+# Mail Search Returns Wrong Results or Nothing
+
+## Mentions: 8+ commenters
+## Severity: HIGH
+
+## Affected Products
+- macOS Mail
+- iOS Mail
+
+## Duration
+- Over a decade
+
+## Description
+The search functionality in Apple Mail is fundamentally broken:
+- Searches return irrelevant results
+- Known emails cannot be found even with exact subject lines
+- Search index becomes corrupted regularly
+- Rebuilding index doesn't always fix the problem
+- Server-side search works but local doesn't
+
+## User Reports
+- "I can see an email in my inbox but search can't find it"
+- "Mail search has been broken for over a decade"
+- "I had to switch to a third-party email client just to search"
+- "Rebuilding the index takes hours and doesn't fix it"
+
+## Workarounds
+- Use webmail interface to search
+- Switch to third-party email clients (Spark, Airmail, etc.)
+- Manually rebuild mail index (time-consuming, unreliable)
+- Use Spotlight search instead of in-app search
+
+## Technical Notes
+- Index stored in ~/Library/Mail/V*/MailData/Envelope Index
+- Corruption seems related to IMAP sync issues
+- Problem worse with large mailboxes
+
+## Source
+https://news.ycombinator.com/item?id=46727587

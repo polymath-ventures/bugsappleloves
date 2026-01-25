@@ -1,0 +1,36 @@
+# iOS Keyboard Inserts Wrong Characters
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- iOS
+
+## Duration
+- Ongoing
+
+## Description
+The iOS keyboard randomly inserts wrong characters during typing:
+- Pressing one key types a different letter
+- Characters appear in wrong positions
+- Spaces inserted randomly
+- Particularly bad during fast typing
+
+## User Reports
+- "I clearly pressed 'e' but it typed 'r'"
+- "Characters just appear in the wrong place"
+- "This has been documented on YouTube with slow-motion video"
+
+## Workarounds
+- Type slower
+- Use an external keyboard
+- Use voice dictation
+- Proofread everything carefully
+
+## Technical Notes
+- May be related to touch prediction algorithms
+- Worse on certain device models
+- Can be affected by screen protectors
+
+## Source
+https://news.ycombinator.com/item?id=46727587

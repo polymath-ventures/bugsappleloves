@@ -1,0 +1,36 @@
+# Emoji Picker Malfunction
+
+## Mentions: 2 commenters
+## Severity: MEDIUM
+
+## Affected Products
+- macOS
+
+## Duration
+- Ongoing
+
+## Description
+The macOS emoji picker (Cmd+Ctrl+Space) has multiple issues:
+- Search bar stops working entirely
+- Picker refuses to appear
+- Picker appears but is unresponsive
+- Search returns no results for common emoji names
+
+## User Reports
+- "I press the shortcut and nothing happens"
+- "The emoji picker search just stopped working one day"
+- "I can open it but typing in search does nothing"
+
+## Workarounds
+- Restart the app you're typing in
+- Log out and back in
+- Use Character Viewer instead
+- Copy emojis from a website
+
+## Technical Notes
+- May be related to input method issues
+- Sometimes fixed by resetting NVRAM
+- Can be triggered by certain apps
+
+## Source
+https://news.ycombinator.com/item?id=46727587

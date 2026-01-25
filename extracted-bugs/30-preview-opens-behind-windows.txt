@@ -1,0 +1,28 @@
+# Preview Opens Files Behind Other Windows
+
+## Mentions: 1 commenter
+## Severity: LOW
+
+## Affected Products
+- macOS Preview
+
+## Duration
+- Ongoing
+
+## Description
+When opening files in Preview, the window appears behind other applications:
+- Have to click on Preview in Dock to bring it forward
+- Happens with double-click file open
+- Inconsistent - sometimes works, sometimes doesn't
+- Other apps open in front correctly
+
+## User Reports
+- "I double-click a PDF and nothing seems to happen until I realize it opened behind"
+
+## Workarounds
+- Click Preview in Dock after opening
+- Use "Hide Others" command
+- Keep Preview visible in front
+
+## Source
+https://news.ycombinator.com/item?id=46727587

@@ -1,0 +1,38 @@
+# Autocorrect Refuses User Corrections
+
+## Mentions: 8+ commenters
+## Severity: HIGH
+
+## Affected Products
+- iOS
+- macOS
+
+## Duration
+- Years (ongoing)
+
+## Description
+After a user manually corrects a word that was autocorrected, the system reverts it back to the "corrected" version. This creates a frustrating loop where:
+- User types intended word
+- Autocorrect changes it
+- User fixes it back to original
+- Autocorrect changes it AGAIN
+- Process repeats multiple times
+
+## User Reports
+- "I have to correct the same word 3-4 times before it sticks"
+- "Autocorrect fights me on words I use regularly"
+- "It keeps changing my name spelling even after I add it to contacts"
+- "The keyboard learns wrong patterns and won't unlearn them"
+
+## Workarounds
+- Add words to text replacement shortcuts
+- Disable autocorrect entirely
+- Type a space after the word, then delete and retype
+
+## Related Issues
+- Keyboard prediction learns incorrect patterns
+- No easy way to reset keyboard learning
+- Contact names not respected by autocorrect
+
+## Source
+https://news.ycombinator.com/item?id=46727587

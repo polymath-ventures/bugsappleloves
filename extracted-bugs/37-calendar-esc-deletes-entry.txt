@@ -1,0 +1,31 @@
+# Calendar Pressing ESC Deletes Unsaved Event
+
+## Mentions: 1 commenter
+## Severity: MEDIUM
+
+## Affected Products
+- macOS Calendar
+
+## Duration
+- Multiple releases
+
+## Description
+Pressing the Escape key while creating a calendar event silently deletes the unsaved entry:
+- No confirmation dialog
+- Entry completely lost
+- Easy to do accidentally
+- Esc normally means "cancel editing" not "delete"
+
+## User Reports
+- "I hit Esc by habit and my 15-minute event setup was just gone"
+
+## Workarounds
+- Click away from event instead of pressing Esc
+- Develop new muscle memory
+- Save immediately after creating
+
+## Design Issue
+This violates user expectations - Esc should cancel the current action, not delete unsaved work.
+
+## Source
+https://news.ycombinator.com/item?id=46727587

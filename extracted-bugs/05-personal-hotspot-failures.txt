@@ -1,0 +1,39 @@
+# Personal Hotspot Connection Failures
+
+## Mentions: 5+ commenters
+## Severity: HIGH
+
+## Affected Products
+- iOS
+- macOS (connecting to hotspot)
+
+## Duration
+- Years (ongoing)
+
+## Description
+iPhone Personal Hotspot feature fails to work reliably:
+- Mac can't see iPhone hotspot even when enabled
+- Connection drops randomly
+- Requires repeated toggling to connect
+- "Connect to iPhone" option grayed out
+- Hotspot turns itself off unexpectedly
+
+## User Reports
+- "I have to toggle hotspot 3-4 times before my Mac sees it"
+- "The hotspot just disconnects randomly during video calls"
+- "Sometimes I have to restart both devices to get it working"
+- "The 'Instant Hotspot' feature almost never works instantly"
+
+## Workarounds
+- Toggle Personal Hotspot off and on multiple times
+- Forget network and reconnect
+- Use USB tethering instead
+- Restart iPhone
+- Sign out and back into iCloud on both devices
+
+## Related Issues
+- Cannot "forget" a personal hotspot network
+- Hotspot reconnects automatically when you don't want it to
+
+## Source
+https://news.ycombinator.com/item?id=46727587

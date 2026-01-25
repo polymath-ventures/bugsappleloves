@@ -1,0 +1,33 @@
+# Notes App Sync Failures
+
+## Mentions: 1 commenter
+## Severity: MEDIUM
+
+## Affected Products
+- iOS Notes
+- macOS Notes
+
+## Duration
+- Ongoing
+
+## Description
+Changes made in Notes don't sync reliably between devices:
+- Edits on one device don't appear on another
+- Notes disappear entirely
+- Sync conflicts handled poorly
+- Old versions overwrite new edits
+
+## User Reports
+- "I wrote a note on my phone and it never appeared on my Mac"
+- "A note I've had for years just vanished"
+
+## Workarounds
+- Force sync by opening Notes on both devices
+- Use a third-party notes app
+- Manually copy important notes
+
+## Impact
+Can result in lost work and important information.
+
+## Source
+https://news.ycombinator.com/item?id=46727587

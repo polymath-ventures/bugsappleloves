@@ -1,0 +1,33 @@
+# macOS Color Picker Takes Forever to Launch
+
+## Mentions: 1 commenter
+## Severity: LOW
+
+## Affected Products
+- macOS
+
+## Duration
+- Years
+
+## Description
+Opening the system color picker has a significant delay:
+- 10+ second wait when opening color selection
+- System hangs during this time
+- Happens in multiple applications
+- Makes color work frustrating
+
+## User Reports
+- "I click on color and wait 10 seconds for the picker to appear"
+
+## Workarounds
+- Use app-specific color pickers
+- Use color palette apps
+- Pre-select colors and paste hex values
+
+## Technical Notes
+- May be related to color profile loading
+- Could be graphics driver issue
+- Worse on some machines than others
+
+## Source
+https://news.ycombinator.com/item?id=46727587

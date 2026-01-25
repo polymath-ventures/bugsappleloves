@@ -1,0 +1,33 @@
+# macOS Multi-User Graphics Corruption
+
+## Mentions: 1 commenter
+## Severity: MEDIUM
+
+## Affected Products
+- macOS (M3 Max noted)
+
+## Duration
+- Ongoing across multiple versions
+
+## Description
+After switching between user accounts multiple times, graphics become corrupted:
+- Pink artifacts appear on screen
+- Windows show visual decay
+- UI elements render incorrectly
+- Requires logout or restart to fix
+
+## User Reports
+- "After switching users a few times, I get pink blocks all over the screen"
+
+## Workarounds
+- Avoid frequent user switching
+- Restart after switching users
+- Use separate devices per user
+
+## Technical Notes
+- Reported on M3 Max hardware
+- May be Apple Silicon GPU driver issue
+- Graphics memory not properly released between sessions
+
+## Source
+https://news.ycombinator.com/item?id=46727587
