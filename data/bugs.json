@@ -1733,6 +1733,119 @@
         "sprints": 1,
         "explanation": "Once a user confirms an automation, remember it. Stop asking. One engineer, a few days. This is not hard."
       }
+    },
+
+    {
+      "id": "finder-window-amnesia",
+      "title": "Finder Forgets Window Sizes",
+      "subtitle": "You resized it. Finder doesn't care.",
+      "description": "You resize a Finder window. You set it to fill the screen, or position it just right. You close it. You open a new Finder window. It's some random size again. Small. Wrong position. You resize it again. Close it. Open a new one. Wrong again. Sometimes restart helps. Sometimes it doesn't. Finder stores window state somewhere, but it's clearly written on a napkin that blows away in the wind.",
+      "platforms": ["macOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2001",
+      "tags": ["Finder", "Window Management", "Preferences", "Amnesia"],
+
+      "scope": {
+        "featureUsageRate": 0.95,
+        "featureUsageLabel": "of Mac users use Finder",
+        "bugEncounterRate": 0.50,
+        "bugEncounterLabel": "of users experience window size not persisting",
+        "frequencyPerDay": 5.0,
+        "frequencyLabel": "new Finder windows opened per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The window size groundhog day",
+        "steps": [
+          {
+            "id": "resize_window",
+            "action": "Resize Finder window",
+            "description": "Drag it to the size you want",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_resize"
+          },
+          {
+            "id": "close_window",
+            "action": "Close the window",
+            "description": "Done with this folder",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_close"
+          },
+          {
+            "id": "open_new",
+            "action": "Open a new Finder window",
+            "description": "Need to look at something else",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_open"
+          },
+          {
+            "id": "wrong_size",
+            "action": "Window is wrong size",
+            "description": "Small, wrong position, not what you set",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_wrong"
+          },
+          {
+            "id": "resize_again",
+            "action": "Resize it again",
+            "description": "Sigh and drag it back to where you want it",
+            "seconds": 4,
+            "retries": 1,
+            "symbol": "T_again"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Workarounds for persistent window sizes",
+        "sinks": [
+          {
+            "id": "hold_option",
+            "action": "Learn the Option-close trick",
+            "description": "Hold Option while closing to 'save' size. Sometimes works.",
+            "seconds": 30,
+            "participation": 0.15,
+            "frequencyDays": 30,
+            "symbol": "T_option"
+          },
+          {
+            "id": "delete_plist",
+            "action": "Delete Finder preferences",
+            "description": "Nuke com.apple.finder.plist and start fresh",
+            "seconds": 300,
+            "participation": 0.10,
+            "frequencyDays": 180,
+            "symbol": "T_plist"
+          },
+          {
+            "id": "third_party",
+            "action": "Install window manager app",
+            "description": "Use Moom, Magnet, or Rectangle instead",
+            "seconds": 600,
+            "participation": 0.25,
+            "frequencyDays": 365,
+            "symbol": "T_app"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.2,
+        "pressureLabel": "It's the file manager. You use it constantly.",
+        "pressureExplanation": "1.0 = casual browsing, 2.0 = managing files on a deadline"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 40,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Persist window state reliably. It's a key-value store. This was solved in the 1990s. One engineer, one week."
+      }
     }
   ]
 }
