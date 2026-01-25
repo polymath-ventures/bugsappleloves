@@ -1620,6 +1620,119 @@
         "sprints": 1,
         "explanation": "Freeze the list while the menu is open. Add new items at the bottom, not the top. One engineer, one day."
       }
+    },
+
+    {
+      "id": "shortcuts-reconfirm",
+      "title": "Shortcuts Keeps Asking If You're Sure",
+      "subtitle": "You set up the automation. You are the automation. It still doesn't trust you.",
+      "description": "You created a Shortcut. You set up an automation trigger. It worked great for a while. Then one day, Apple asks you to confirm you still want to run it. You tap yes. A week later, it asks again. You tap yes. It keeps asking, randomly, forever. You made this automation. On your device. For yourself. But Apple treats you like a suspicious stranger trying to hack your own phone.",
+      "platforms": ["iOS", "iPadOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2020",
+      "tags": ["Shortcuts", "Automation", "Permissions", "Security Theater"],
+
+      "scope": {
+        "featureUsageRate": 0.15,
+        "featureUsageLabel": "of users use Shortcuts automations",
+        "bugEncounterRate": 0.70,
+        "bugEncounterLabel": "of automation users get random re-confirmation prompts",
+        "frequencyPerDay": 0.5,
+        "frequencyLabel": "unexpected permission prompts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The trust interrogation",
+        "steps": [
+          {
+            "id": "automation_triggers",
+            "action": "Automation tries to run",
+            "description": "The thing you set up attempts to do the thing",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_trigger"
+          },
+          {
+            "id": "prompt_appears",
+            "action": "Permission prompt appears",
+            "description": "'Do you want to run this shortcut?' Yes. Obviously. I made it.",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_prompt"
+          },
+          {
+            "id": "tap_confirm",
+            "action": "Tap to confirm",
+            "description": "Sigh and tap 'Run' for the hundredth time",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_confirm"
+          },
+          {
+            "id": "works_briefly",
+            "action": "It works... for now",
+            "description": "Automation runs. Peace restored. Temporarily.",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_works"
+          },
+          {
+            "id": "asks_again",
+            "action": "Asks again later",
+            "description": "Days or weeks later, same prompt. No pattern. No logic.",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_again"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Workarounds that defeat the purpose of automation",
+        "sinks": [
+          {
+            "id": "check_settings",
+            "action": "Check 'Ask Before Running' setting",
+            "description": "Toggle it off. Again. It keeps coming back.",
+            "seconds": 60,
+            "participation": 0.50,
+            "frequencyDays": 30,
+            "symbol": "T_settings"
+          },
+          {
+            "id": "recreate_shortcut",
+            "action": "Delete and recreate the shortcut",
+            "description": "Maybe starting fresh will fix it? (It won't.)",
+            "seconds": 300,
+            "participation": 0.25,
+            "frequencyDays": 90,
+            "symbol": "T_recreate"
+          },
+          {
+            "id": "give_up",
+            "action": "Give up on automation entirely",
+            "description": "Just do the thing manually. Automation was a lie.",
+            "seconds": 0,
+            "participation": 0.20,
+            "frequencyDays": 365,
+            "symbol": "T_manual"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.4,
+        "pressureLabel": "Automations are meant to run without you",
+        "pressureExplanation": "1.0 = convenience automation, 2.0 = time-sensitive automation that failed because you weren't there to tap 'yes'"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 24,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Once a user confirms an automation, remember it. Stop asking. One engineer, a few days. This is not hard."
+      }
     }
   ]
 }
