@@ -1379,6 +1379,247 @@
         "sprints": 2,
         "explanation": "Consistent hit targets, predictable selection behavior, trackpad parity with touch. Three engineers, two sprints. But honestly, how is this not done already?"
       }
+    },
+
+    {
+      "id": "airdrop-shuffle",
+      "title": "AirDrop Shuffles Targets Mid-Tap",
+      "subtitle": "You aimed for Sarah. You hit Dave. Dave now has your meme.",
+      "description": "You want to AirDrop something to Sarah. Her name appears. You reach for it. In the 300 milliseconds between your brain saying 'tap' and your finger hitting glass, another device appears and the list reorders. You've just sent your photo to Dave. Or worse, to 'iPhone' — could be anyone. The list loves to shuffle right as you commit. It's like Apple is running A/B tests on your social anxiety.",
+      "platforms": ["iOS", "iPadOS", "macOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2013",
+      "tags": ["AirDrop", "UX", "Timing", "Embarrassment"],
+
+      "scope": {
+        "featureUsageRate": 0.45,
+        "featureUsageLabel": "of users use AirDrop",
+        "bugEncounterRate": 0.25,
+        "bugEncounterLabel": "of AirDrop attempts hit the wrong target due to reorder",
+        "frequencyPerDay": 0.4,
+        "frequencyLabel": "AirDrop attempts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The AirDrop roulette",
+        "steps": [
+          {
+            "id": "see_target",
+            "action": "See the person you want",
+            "description": "Their name appears in the AirDrop list",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_see"
+          },
+          {
+            "id": "reach_tap",
+            "action": "Reach to tap",
+            "description": "Your finger commits to the target",
+            "seconds": 0.3,
+            "retries": 1,
+            "symbol": "T_reach"
+          },
+          {
+            "id": "list_shuffles",
+            "action": "List shuffles",
+            "description": "A new device appears, everything moves",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_shuffle"
+          },
+          {
+            "id": "wrong_target",
+            "action": "Hit wrong target",
+            "description": "You've sent it to someone else",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_wrong"
+          },
+          {
+            "id": "panic",
+            "action": "Moment of panic",
+            "description": "Who did that go to? Can I cancel?",
+            "seconds": 3,
+            "retries": 1,
+            "symbol": "T_panic"
+          },
+          {
+            "id": "damage_control",
+            "action": "Damage control",
+            "description": "Text them 'sorry wrong person' or hope they decline",
+            "seconds": 15,
+            "retries": 1,
+            "symbol": "T_sorry"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Paranoid behaviors developed to avoid mis-sends",
+        "sinks": [
+          {
+            "id": "wait_settle",
+            "action": "Wait for list to 'settle'",
+            "description": "Stare at the list for 5 seconds before tapping, just in case",
+            "seconds": 5,
+            "participation": 0.50,
+            "frequencyDays": 1,
+            "symbol": "T_wait"
+          },
+          {
+            "id": "verify_twice",
+            "action": "Double-check target name",
+            "description": "Read it twice before committing",
+            "seconds": 3,
+            "participation": 0.40,
+            "frequencyDays": 1,
+            "symbol": "T_verify"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.8,
+        "pressureLabel": "Depends on what you're sending and who's around",
+        "pressureExplanation": "1.0 = a link, 2.0 = something you really don't want Dave to see"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 16,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Make AirDrop a two-step flow like Messages or WhatsApp: tap AirDrop icon first, then pick recipient on a dedicated screen. No more shuffling targets in the share sheet. One engineer, a few days."
+      }
+    },
+
+    {
+      "id": "airplay-shuffle",
+      "title": "AirPlay Menu Reorders at Click",
+      "subtitle": "You clicked 'Conference Room TV'. You got 'Karen's MacBook'.",
+      "description": "You're about to present. You click the AirPlay icon. You see 'Conference Room TV'. You click it. In the instant between mousedown and mouseup, 'Karen's MacBook' appeared at the top and everything shifted down. You're now mirroring to Karen. Karen sees your desktop. Karen sees your Slack. The whole conference room watches you fumble to disconnect while your private messages scroll by.",
+      "platforms": ["macOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2015",
+      "tags": ["AirPlay", "UX", "Timing", "Presentations", "Horror"],
+
+      "scope": {
+        "featureUsageRate": 0.30,
+        "featureUsageLabel": "of Mac users use AirPlay to external displays",
+        "bugEncounterRate": 0.35,
+        "bugEncounterLabel": "of AirPlay attempts hit wrong target due to reorder",
+        "frequencyPerDay": 0.3,
+        "frequencyLabel": "AirPlay connection attempts per day"
+      },
+
+      "behavioralFlow": {
+        "description": "The presentation horror show",
+        "steps": [
+          {
+            "id": "click_airplay",
+            "action": "Click AirPlay menu",
+            "description": "Ready to present, looking professional",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_click"
+          },
+          {
+            "id": "see_target",
+            "action": "See conference room TV",
+            "description": "There it is, right where you expect",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_see"
+          },
+          {
+            "id": "click_target",
+            "action": "Click the target",
+            "description": "Mouse commits to the click",
+            "seconds": 0.2,
+            "retries": 1,
+            "symbol": "T_target"
+          },
+          {
+            "id": "list_reorders",
+            "action": "New device appears, list shifts",
+            "description": "Someone's MacBook just showed up at the top",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_shift"
+          },
+          {
+            "id": "wrong_screen",
+            "action": "Connected to wrong screen",
+            "description": "Your desktop is now on Karen's laptop",
+            "seconds": 2,
+            "retries": 1,
+            "symbol": "T_wrong"
+          },
+          {
+            "id": "scramble",
+            "action": "Scramble to disconnect",
+            "description": "Find the menu, click disconnect, pray nothing embarrassing was visible",
+            "seconds": 8,
+            "retries": 1,
+            "symbol": "T_scramble"
+          },
+          {
+            "id": "try_again",
+            "action": "Try again, more carefully",
+            "description": "This time watching the list like a hawk",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_retry"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Pre-meeting rituals to avoid embarrassment",
+        "sinks": [
+          {
+            "id": "close_apps",
+            "action": "Close all personal apps before presenting",
+            "description": "Quit Slack, Messages, Mail... just in case",
+            "seconds": 60,
+            "participation": 0.60,
+            "frequencyDays": 7,
+            "symbol": "T_close"
+          },
+          {
+            "id": "wait_list",
+            "action": "Wait for AirPlay list to stabilize",
+            "description": "Count to three before clicking anything",
+            "seconds": 5,
+            "participation": 0.45,
+            "frequencyDays": 7,
+            "symbol": "T_wait"
+          },
+          {
+            "id": "cable_fallback",
+            "action": "Just use an HDMI cable",
+            "description": "Give up on wireless, carry a dongle everywhere",
+            "seconds": 30,
+            "participation": 0.25,
+            "frequencyDays": 7,
+            "symbol": "T_cable"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 2.0,
+        "pressureLabel": "You're presenting to people. Maximum stakes.",
+        "pressureExplanation": "1.0 = home TV, 2.0 = board meeting with executives watching"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 8,
+        "teamSize": 1,
+        "sprints": 1,
+        "explanation": "Freeze the list while the menu is open. Add new items at the bottom, not the top. One engineer, one day."
+      }
     }
   ]
 }
