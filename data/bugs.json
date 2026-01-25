@@ -1846,6 +1846,135 @@
         "sprints": 1,
         "explanation": "Persist window state reliably. It's a key-value store. This was solved in the 1990s. One engineer, one week."
       }
+    },
+
+    {
+      "id": "keyboard-language-switch",
+      "title": "Keyboard Language Switching Stops Working",
+      "subtitle": "Press Globe. Nothing. Press again. Nothing. Again. Nothing. Again. Oh there it is.",
+      "description": "You press the Globe key to switch keyboard languages. Nothing happens. You press it again. Nothing. Three more times. Still nothing. You try Cmd+Space. Nothing. You open the menu bar and click the language manually. It works. Now the Globe key works again. Until tomorrow, when it randomly stops working again. Apple has decided that multilingual users are not a priority.",
+      "platforms": ["macOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2016",
+      "tags": ["Keyboard", "Language", "Globe Key", "Multilingual", "Input Sources"],
+
+      "scope": {
+        "featureUsageRate": 0.25,
+        "featureUsageLabel": "of Mac users use multiple keyboard languages",
+        "bugEncounterRate": 0.65,
+        "bugEncounterLabel": "of multilingual users experience Globe key failures",
+        "frequencyPerDay": 15.0,
+        "frequencyLabel": "language switches per day for bilingual users"
+      },
+
+      "behavioralFlow": {
+        "description": "The language switching lottery",
+        "steps": [
+          {
+            "id": "need_switch",
+            "action": "Need to switch language",
+            "description": "Time to type in your other language",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_need"
+          },
+          {
+            "id": "press_globe",
+            "action": "Press Globe key",
+            "description": "The key that's supposed to switch languages",
+            "seconds": 0.5,
+            "retries": 1,
+            "symbol": "T_globe"
+          },
+          {
+            "id": "nothing",
+            "action": "Nothing happens",
+            "description": "The language indicator doesn't change",
+            "seconds": 1,
+            "retries": 1,
+            "symbol": "T_nothing"
+          },
+          {
+            "id": "press_again",
+            "action": "Press it again. And again.",
+            "description": "Maybe you didn't press hard enough?",
+            "seconds": 2,
+            "retries": 3,
+            "symbol": "T_again"
+          },
+          {
+            "id": "try_shortcut",
+            "action": "Try Ctrl+Space instead",
+            "description": "The backup shortcut that sometimes works",
+            "seconds": 2,
+            "retries": 2,
+            "symbol": "T_ctrl"
+          },
+          {
+            "id": "menu_bar",
+            "action": "Click menu bar manually",
+            "description": "Give up on keyboard, use mouse like an animal",
+            "seconds": 4,
+            "retries": 1,
+            "symbol": "T_menu"
+          },
+          {
+            "id": "works_now",
+            "action": "Now the Globe key works again",
+            "description": "Clicking the menu somehow fixed it. For now.",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_fixed"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Rituals to appease the language switching gods",
+        "sinks": [
+          {
+            "id": "kill_process",
+            "action": "Kill TextInputSwitcher process",
+            "description": "Open Activity Monitor, find it, force quit, hope it helps",
+            "seconds": 120,
+            "participation": 0.15,
+            "frequencyDays": 14,
+            "symbol": "T_kill"
+          },
+          {
+            "id": "restore_defaults",
+            "action": "Restore keyboard shortcuts to defaults",
+            "description": "System Preferences → Keyboard → Shortcuts → Restore Defaults",
+            "seconds": 60,
+            "participation": 0.30,
+            "frequencyDays": 30,
+            "symbol": "T_restore"
+          },
+          {
+            "id": "remove_readd",
+            "action": "Remove and re-add input sources",
+            "description": "Delete all your languages, add them back, reconfigure everything",
+            "seconds": 300,
+            "participation": 0.20,
+            "frequencyDays": 60,
+            "symbol": "T_readd"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.6,
+        "pressureLabel": "You're mid-sentence and need to switch languages",
+        "pressureExplanation": "1.0 = casual typing, 2.0 = professional email mixing languages"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 80,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Fix the TextInputSwitcher process that randomly stops responding. Make the Globe key work every time. Two engineers, one sprint. Bilingual users have suffered long enough."
+      }
     }
   ]
 }
