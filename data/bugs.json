@@ -1982,7 +1982,7 @@
       "title": "Screen Time APIs Are Unreliable and Regress Frequently",
       "subtitle": "Limits trigger too early or too late, Application Tokens change, and apps get incorrectly shielded",
       "description": "Apple’s Screen Time system and related APIs exhibit multiple long-standing reliability issues and regressions. These bugs undermine user trust, break third-party app logic, and directly result in increased, not decreased, time spent on social media.",
-      "platforms": ["iOS", "iPadOS"],
+      "platforms": ["iOS", "iPadOS", "macOS"],
       "reportedDate": "2022",
       "tags": ["Screen Time", "FamilyControls", "DeviceActivity", "Regression", "APIs", "Digital Wellbeing"],
 
