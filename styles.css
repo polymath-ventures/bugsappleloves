@@ -653,6 +653,17 @@ body {
     color: var(--impact-red);
 }
 
+.bug-source-credit {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    background: rgba(41, 151, 255, 0.1);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-style: italic;
+}
+
 .bug-source {
     font-size: 13px;
     color: var(--text-tertiary);

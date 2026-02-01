@@ -1012,13 +1012,14 @@
       "id": "window-resize-tahoe",
       "title": "macOS 26 Window Resizing Doesn't Work",
       "subtitle": "The corner is there. You just can't click it.",
-      "description": "You try to resize a window by grabbing the corner. You miss. You try again. Miss. You hover precisely where the corner should be. Nothing. Turns out the resize target is a tiny 19×19 pixel zone, but thanks to Tahoe's huge corner radius, 75% of it is outside the visible window. You have to click in empty space next to the window to resize it. Intuitive. (All credit goes to to <a href='https://noheger.at/blog/2026/01/11/the-struggle-of-resizing-windows-on-macos-tahoe/'>Norbert Heger at noheger.at</a> for doing all of the extensive legwork on this one!",
+      "description": "You try to resize a window by grabbing the corner. You miss. You try again. Miss. You hover precisely where the corner should be. Nothing. Turns out the resize target is a tiny 19×19 pixel zone, but thanks to Tahoe's huge corner radius, 75% of it is outside the visible window. You have to click in empty space next to the window to resize it. Intuitive.",
       "platforms": ["macOS"],
       "screenshot": "screenshots/clickable-area-1.webp",
       "videoUrl": null,
       "reportedDate": "2025",
       "sourceUrl": "https://noheger.at/blog/2026/01/11/the-struggle-of-resizing-windows-on-macos-tahoe/",
-      "sourceLabel": "Excellent analysis by noheger.at",
+      "sourceLabel": "Original research by Norbert Heger",
+      "sourceCredit": "This bug was discovered and meticulously documented by Norbert Heger at noheger.at, who did all the pixel-level analysis to prove what we all suspected.",
       "tags": ["macOS", "Window Management", "UX", "Tahoe"],
 
       "scope": {
@@ -1974,6 +1975,155 @@
         "teamSize": 2,
         "sprints": 1,
         "explanation": "Fix the TextInputSwitcher process that randomly stops responding. Make the Globe key work every time. Two engineers, one sprint. Bilingual users have suffered long enough."
+      }
+    },
+
+    {
+      "id": "time-machine-smb-silent-fail",
+      "title": "Time Machine Silently Stops Backing Up",
+      "subtitle": "Your backups stopped months ago. You'll find out when you need them.",
+      "description": "You have Time Machine backing up to a NAS over SMB. It worked fine for years. Then you upgraded to macOS Tahoe. Backups silently stopped. No error message. No notification. No indication anything is wrong. You only discover this when you need to restore something and realize your most recent backup is from before the upgrade. Apple changed SMB default settings without telling anyone.",
+      "platforms": ["macOS"],
+      "screenshot": null,
+      "videoUrl": null,
+      "reportedDate": "2025",
+      "sourceUrl": "https://taoofmac.com/space/til/2026/02/01/1630",
+      "sourceLabel": "Discovered by Rui Carmo at Tao of Mac",
+      "sourceCredit": "This bug was documented by Rui Carmo at taoofmac.com after discovering his backups had silently failed. His investigation revealed Apple changed SMB signing defaults without warning.",
+      "tags": ["Time Machine", "Backup", "SMB", "NAS", "Tahoe", "Silent Failure"],
+
+      "scope": {
+        "featureUsageRate": 0.40,
+        "featureUsageLabel": "of Mac users use Time Machine",
+        "bugEncounterRate": 0.25,
+        "bugEncounterLabel": "of Time Machine users back up to NAS over SMB",
+        "frequencyPerDay": 0.003,
+        "frequencyLabel": "times per day you discover your backups are gone (once every few months, devastating)"
+      },
+
+      "behavioralFlow": {
+        "description": "The backup betrayal discovery",
+        "steps": [
+          {
+            "id": "upgrade_macos",
+            "action": "Upgrade to macOS Tahoe",
+            "description": "Install the new OS, everything seems fine",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_upgrade"
+          },
+          {
+            "id": "backups_stop",
+            "action": "Backups silently stop",
+            "description": "Time Machine stops working. No error. No notification.",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_stop"
+          },
+          {
+            "id": "months_pass",
+            "action": "Months pass",
+            "description": "You think you're protected. You're not.",
+            "seconds": 0,
+            "retries": 1,
+            "symbol": "T_months"
+          },
+          {
+            "id": "need_restore",
+            "action": "Need to restore something",
+            "description": "Accidentally delete a file, or worse",
+            "seconds": 5,
+            "retries": 1,
+            "symbol": "T_need"
+          },
+          {
+            "id": "discover_horror",
+            "action": "Discover backups stopped months ago",
+            "description": "The file you need isn't in any backup. Your most recent backup predates the OS upgrade.",
+            "seconds": 30,
+            "retries": 1,
+            "symbol": "T_horror"
+          },
+          {
+            "id": "panic",
+            "action": "Panic and investigate",
+            "description": "Why didn't it tell me? Why is there no error?",
+            "seconds": 600,
+            "retries": 1,
+            "symbol": "T_panic"
+          },
+          {
+            "id": "discover_smb",
+            "action": "Discover SMB settings changed",
+            "description": "Apple silently changed signing_required defaults",
+            "seconds": 1800,
+            "retries": 1,
+            "symbol": "T_smb"
+          },
+          {
+            "id": "fix_nas",
+            "action": "Reconfigure NAS or macOS",
+            "description": "Change SMB settings, start fresh backup",
+            "seconds": 1800,
+            "retries": 1,
+            "symbol": "T_fix"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Discovering and fixing the silent failure",
+        "sinks": [
+          {
+            "id": "verify_backups",
+            "action": "Manually verify backup status",
+            "description": "Periodically check Time Machine is actually running",
+            "seconds": 120,
+            "participation": 0.30,
+            "frequencyDays": 30,
+            "symbol": "T_verify"
+          },
+          {
+            "id": "research_fix",
+            "action": "Research SMB compatibility",
+            "description": "Google the error, find forum posts, understand the SMB changes",
+            "seconds": 1800,
+            "participation": 0.80,
+            "frequencyDays": 365,
+            "symbol": "T_research"
+          },
+          {
+            "id": "reconfigure_nas",
+            "action": "Reconfigure NAS SMB settings",
+            "description": "Change signing settings on Synology/QNAP/etc",
+            "seconds": 1200,
+            "participation": 0.60,
+            "frequencyDays": 365,
+            "symbol": "T_nas"
+          },
+          {
+            "id": "fresh_backup",
+            "action": "Start fresh Time Machine backup",
+            "description": "Create new backup from scratch, wait hours/days",
+            "seconds": 3600,
+            "participation": 0.70,
+            "frequencyDays": 365,
+            "symbol": "T_fresh"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 2.0,
+        "pressureLabel": "Backups are your last line of defense",
+        "pressureExplanation": "1.0 = checking backup status casually, 2.0 = discovering your backups are gone when you desperately need them"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 40,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Show an error when Time Machine can't connect. That's it. Just tell the user. Two engineers, one sprint. But honestly, one intern, one afternoon."
       }
     }
   ]

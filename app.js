@@ -506,7 +506,8 @@ function renderBugCard(bug, impact, index) {
                 ${bug.tags.map(tag => `<span class="bug-tag">${tag}</span>`).join('')}
             </div>
             <p class="bug-date">${formatDate(bug.reportedDate)} · <strong>${impact.yearsUnfixed} years unfixed by Apple</strong></p>
-            ${bug.sourceUrl ? `<p class="bug-source">Source: <a href="${bug.sourceUrl}" target="_blank">${bug.sourceLabel || bug.sourceUrl}</a></p>` : ''}
+            ${bug.sourceCredit ? `<p class="bug-source-credit">📣 ${bug.sourceCredit}</p>` : ''}
+            ${bug.sourceUrl ? `<p class="bug-source"><a href="${bug.sourceUrl}" target="_blank">→ ${bug.sourceLabel || 'Read the original research'}</a></p>` : ''}
             <a href="#${bug.id}" class="bug-permalink" title="Link to this bug">🔗 Permalink</a>
         </footer>
     `;
