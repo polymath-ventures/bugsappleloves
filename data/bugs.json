@@ -2126,5 +2126,127 @@
         "explanation": "Show an error when Time Machine can't connect. That's it. Just tell the user. Two engineers, one sprint. But honestly, one intern, one afternoon."
       }
     }
+    ,
+    {
+      "id": "screen-time-api-instability",
+      "title": "Screen Time APIs Are Unreliable and Regress Frequently",
+      "subtitle": "Limits trigger too early or too late, Application Tokens change, and apps get incorrectly shielded",
+      "description": "Apple’s Screen Time system and related APIs exhibit multiple long-standing reliability issues and regressions. These bugs undermine user trust, break third-party app logic, and directly result in increased, not decreased, time spent on social media.",
+      "platforms": ["iOS", "iPadOS", "macOS"],
+      "reportedDate": "2022",
+      "tags": ["Screen Time", "FamilyControls", "DeviceActivity", "Regression", "APIs", "Digital Wellbeing"],
+
+      "scope": {
+        "featureUsageRate": 1.0,
+        "featureUsageLabel": "of users attempt to use Screen Time limits",
+        "bugEncounterRate": 1.0,
+        "bugEncounterLabel": "of Screen Time users experience broken or unreliable limits",
+        "frequencyPerDay": 1000000,
+        "frequencyLabel": "failed Screen Time interactions per day"
+      },
+
+      "subIssues": [
+        {
+          "id": "ios26-activity-threshold-regression",
+          "title": "iOS 26 Regression: Activity Threshold Triggers Immediately",
+          "description": "In iOS 26, DeviceActivity thresholds can trigger immediately when opening an app, even when a limit (e.g. 5 minutes) is clearly configured. In practice, the limit fires right after launch instead of after the specified duration. This regression is reproducible and renders the feature unusable, causing users to abandon limits and spend hours scrolling on social media."
+        },
+        {
+          "id": "application-token-instability",
+          "title": "ApplicationTokens Change or Mismatch Over Time",
+          "description": "Starting around iOS 17.5, ApplicationTokens provided by the Screen Time / FamilyControls APIs sometimes change after a few days or do not match the tokens originally selected by the user. Tokens received in ShieldActionExtension or ShieldConfigurationExtension may not correspond to any known or user-selected app, directly contradicting API expectations."
+        }
+      ],
+
+      "behavioralFlow": {
+        "description": "How Screen Time failures lead to unproductive scrolling",
+        "steps": [
+          {
+            "id": "set_limit",
+            "action": "User sets a Screen Time limit",
+            "description": "User configures a time limit to reduce usage",
+            "seconds": 30,
+            "retries": 1,
+            "symbol": "T_set"
+          },
+          {
+            "id": "limit_breaks",
+            "action": "Limit triggers incorrectly or blocks wrong app",
+            "description": "Threshold fires immediately or wrong app is affected",
+            "seconds": 1800,
+            "retries": 1,
+            "symbol": "T_break"
+          },
+          {
+            "id": "confusion",
+            "action": "User becomes confused and frustrated",
+            "description": "Behavior does not match expectations or configuration",
+            "seconds": 60,
+            "retries": 1,
+            "symbol": "T_confuse"
+          },
+          {
+            "id": "disable_feature",
+            "action": "User disables Screen Time or third-party blocker",
+            "description": "User gives up on limits entirely",
+            "seconds": 60,
+            "retries": 1,
+            "symbol": "T_disable"
+          },
+          {
+            "id": "scroll_more",
+            "action": "User spends more time scrolling",
+            "description": "The broken system leads to the opposite of the intended outcome",
+            "seconds": 1800,
+            "retries": 1,
+            "symbol": "T_scroll"
+          }
+        ]
+      },
+
+      "powerUserTax": {
+        "description": "Developer and user attempts to work around unstable APIs",
+        "sinks": [
+          {
+            "id": "debug_tokens",
+            "action": "Debug ApplicationToken mismatches",
+            "description": "Developers log, compare, and attempt to reconcile changing tokens",
+            "seconds": 1800,
+            "participation": 0.50,
+            "frequencyDays": 7,
+            "symbol": "T_debug"
+          },
+          {
+            "id": "user_reconfigure",
+            "action": "User repeatedly reconfigures limits",
+            "description": "Delete and recreate Screen Time limits hoping they work",
+            "seconds": 300,
+            "participation": 0.40,
+            "frequencyDays": 14,
+            "symbol": "T_reconfigure"
+          }
+        ]
+      },
+
+      "shameFactors": {
+        "pressureFactor": 1.9,
+        "pressureLabel": "Screen Time is meant to protect self-control",
+        "pressureExplanation": "1.0 = optional productivity feature, 2.0 = feature designed to prevent addiction"
+      },
+
+      "engineeringEstimate": {
+        "hoursToFix": 300,
+        "teamSize": 2,
+        "sprints": 1,
+        "explanation": "Stabilize ApplicationTokens, add regression tests for DeviceActivity thresholds, ensure API contracts are upheld across OS releases, and properly document APIs and API behavior."
+      },
+
+      "references": [
+        {
+          "label": "Apple Developer Forums: ApplicationToken mismatch",
+          "url": "https://forums.developer.apple.com/forums/thread/756440"
+        }
+      ]
+    }
   ]
 }
